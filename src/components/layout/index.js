@@ -13,6 +13,7 @@ const Main = styled.main`
   max-width: 900px;
   margin: 50px auto;
 `
+
 const Layout = ({ children }) => (
   <StaticQuery
     query={query}

@@ -42,8 +42,7 @@ exports.createPages = ({ graphql, actions }) => {
         }
 
         result.data.projects.edges.forEach(edge => {
-          if (edge.node.fields.slug.match(/content/)) return
-
+          
           createPage({
             path: edge.node.fields.slug,
             component,

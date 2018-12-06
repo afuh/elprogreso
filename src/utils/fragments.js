@@ -6,13 +6,6 @@ export const MarkdownFragment = graphql`
     html
     frontmatter {
       title
-      image {
-        childImageSharp {
-          fluid(maxWidth: 600) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
     }
   }
 `

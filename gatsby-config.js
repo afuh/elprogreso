@@ -8,9 +8,9 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
-    'gatsby-plugin-catch-links',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-sitemap',
+    'gatsby-transformer-remark',
     'gatsby-plugin-robots-txt',
     {
       resolve: `gatsby-plugin-manifest`,
@@ -33,42 +33,10 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'content',
-        path: `${__dirname}/content/`
-      }
-    },
-    {
       resolve: `gatsby-plugin-nprogress`,
       options: {
         color: siteConfig.themeColor,
         showSpinner: false
-      }
-    },
-    {
-      resolve: 'gatsby-transformer-remark',
-      options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 900,
-              linkImagesToOriginal: true
-            }
-          },
-          'gatsby-remark-autolink-headers',
-          'gatsby-remark-smartypants',
-          'gatsby-remark-prismjs'
-        ]
-      }
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: process.env.GA,
-        anonymize: true,
-        respectDNT: true
       }
     },
     'gatsby-plugin-offline',

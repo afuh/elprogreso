@@ -1,7 +1,7 @@
 module.exports = {
-  title: 'Title',
-  titleTemplate: '%s | Site title',
-  description: "Site description.",
+  title: 'Confitería El Progreso',
+  titleTemplate: '%s | El Progreso',
+  description: "Confitería El Progreso, desde 1919",
   siteUrl: 'http://example.com', // no trailing slash
   favicon: '/images/icon-32x32.png',
   image: '/images/cover-1440x720.jpg',
@@ -9,15 +9,10 @@ module.exports = {
   themeColor: '#000',
   backgroundColor: '#fff',
   nav: [
-    { name: "Home", path: '/' },
-    { name: "About", path: '/about' }
+    { name: "Home", path: '/' }
   ],
   social: [
     { name: "Facebook", url: 'https://www.facebook.com/<user>', icon: 'Facebook' },
-    { name: "Twitter", url: 'https://twitter.com/<user>', icon: 'Twitter' },
-    { name: "Linkedin", url: 'https://www.linkedin.com/in/<user>', icon: 'Linkedin' },
-    { name: "Medium", url: 'https://medium.com/<user>', icon: 'Medium' },
-    { name: "Github", url: 'https://github.com/<user>', icon: 'Github' },
-    { name: "Mail", url: 'mailto:example@example.com', icon: 'Envelope' }
+    { name: "Twitter", url: 'https://twitter.com/<user>', icon: 'Twitter' }
   ]
 }
