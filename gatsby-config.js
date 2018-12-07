@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`
+})
+
 const siteConfig = require('./config/siteConfig')
 
 module.exports = {
@@ -23,6 +27,13 @@ module.exports = {
         theme_color: siteConfig.themeColor,
         display: "standalone",
         icon: `src/assets/icon-512x512.png`
+      }
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.SPACE_ID,
+        accessToken: process.env.TOKEN
       }
     },
     {
