@@ -17,17 +17,17 @@ const Main = styled.main`
 const Layout = ({ children }) => (
   <StaticQuery
     query={query}
-    render={({ site: { meta } }) => (
+    render={({ social: { links } }) => (
       <>
         <GlobalStyle />
         <SEO />
         <ThemeProvider theme={theme}>
           <>
-            <Header nav={meta.nav} />
+            <Header />
             <Main>
               {children}
             </Main>
-            <Footer social={meta.social}/>
+            <Footer social={links} />
           </>
         </ThemeProvider>
       </>
@@ -52,16 +52,10 @@ export default ({ children }) => (
 
 const query = graphql`
   query LAYOUT_QUERY {
-    site {
-      meta: siteMetadata {
-        nav {
-          name
-          path
-        }
-        social {
-          url
-          icon
-        }
+    social: contentfulSocialLinks {
+      links {
+        name
+        url
       }
     }
   }

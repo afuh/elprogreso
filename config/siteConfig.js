@@ -7,12 +7,5 @@ module.exports = {
   image: '/images/cover-1440x720.jpg',
   userTwitter: '',
   themeColor: '#000',
-  backgroundColor: '#fff',
-  nav: [
-    { name: "Home", path: '/' }
-  ],
-  social: [
-    { name: "Facebook", url: 'https://www.facebook.com/<user>', icon: 'Facebook' },
-    { name: "Twitter", url: 'https://twitter.com/<user>', icon: 'Twitter' }
-  ]
+  backgroundColor: '#fff'
 }

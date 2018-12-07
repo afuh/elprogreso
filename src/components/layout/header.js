@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
@@ -11,23 +10,16 @@ const Content = styled.header`
   padding: 20px;
 `
 
-const Header = ({ nav }) => (
+const Header = () => (
   <Content>
-    {nav.map(item => (
-      <Link
-        activeStyle={{ color: theme.deeporange }}
-        style={{ marginRight: 10 }}
-        key={item.name}
-        to={item.path}
-      >
-        {item.name}
-      </Link>
-    ))}
+    <Link
+      activeStyle={{ color: theme.deeporange }}
+      style={{ marginRight: 10 }}
+      to="/"
+    >
+      Home
+    </Link>
   </Content>
 )
-
-Header.propTypes = {
-  nav: PropTypes.array.isRequired
-}
 
 export default Header

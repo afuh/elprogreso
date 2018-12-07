@@ -27,10 +27,10 @@ const Footer = ({ social }) => (
   <Content>
     {social.map(item => (
       <Icon
-        key={item.icon}
+        key={item.name}
         href={item.url}
       >
-        {findIcon(item.icon)}
+        {findIcon(item.name)}
       </Icon>
     ))}
   </Content>
