@@ -31,6 +31,7 @@ export const HomePage = graphql`
       }
     }
     gallery {
+      title
       file {
         details {
           image {

@@ -2,16 +2,66 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import GatsbyImg from 'gatsby-image'
 import Lightbox from 'react-images'
-import Images from 'react-photo-gallery'
+import styled, { css } from 'styled-components'
+
+import { media } from '../../utils/style'
+
+const margin = 4
+
+const Wrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+`
+
+const ImageWrapper = styled.div`
+  flex-basis: calc(${({ big }) => big ? 50 : 25}% - ${margin*2}px);
+  margin: ${margin}px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+
+  ${media.mobile(css`
+    flex-basis: calc(50% - ${margin*2}px);
+  `)}
+
+  ${media.phone(css`
+    flex-basis: 100%;
+  `)}
+`
+
+const Overlay = styled.div`
+  cursor: pointer;
+  opacity: 0;
+  background: linear-gradient(to top, rgba(0,0,0, 0.7) 10%, rgba(0,0,0, 0.1));
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  padding-bottom: 30px;
+
+  :hover {
+    opacity: 1;
+  }
+
+  transition: opacity ease-in-out 0.3s;
+`
 
 class Gallery extends Component {
   state = {
     currentImage: 0
   }
 
-  openLightbox = (e, { index }) => {
+  openLightbox = currentImage => {
     this.setState({
-      currentImage: index,
+      currentImage,
       isOpen: true
     })
   }
@@ -36,24 +86,23 @@ class Gallery extends Component {
     const { currentImage, isOpen } = this.state
 
     return (
-      <>
-        <Images
-          photos={photos}
-          onClick={this.openLightbox}
-          ImageComponent={({ index, photo, margin, onClick }) => (
-            <div onClick={e => onClick(e, { index })}> {/* eslint-disable-line */}
-              <GatsbyImg
-                style={{
-                  cursor: 'pointer',
-                  width: photo.width,
-                  height: photo.height,
-                  margin
-                }}
-                fluid={photo.fluid}
-              />
-            </div>
-          )}
-        />
+      <Wrapper>
+        {photos.map((photo, i) => (
+          <ImageWrapper
+            big={!!((i === 0 || i === 9))}
+            key={i}
+            onClick={() => this.openLightbox(i)}
+          >
+            <Overlay>
+              <h2>{photo.caption}</h2>
+            </Overlay>
+            <GatsbyImg
+              imgStyle={{ objectFit: "cover" }}
+              style={{ height: "100%", maxHeight: 400 }}
+              fluid={photo.fluid}
+            />
+          </ImageWrapper>
+        ))}
         <Lightbox
           images={photos}
           onClose={this.closeLightbox}
@@ -63,7 +112,7 @@ class Gallery extends Component {
           isOpen={isOpen}
           backdropClosesModal
         />
-      </>
+      </Wrapper>
     )
   }
 }

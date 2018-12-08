@@ -9,6 +9,7 @@ const Productos = ({ content: { gallery, name } }) => {
     ...acc,
     {
       fluid: ph.fluid,
+      caption: ph.title,
       src: ph.fluid.src,
       srcSet: ph.fluid.srcSet,
       width: ph.file.details.image.width/100,
