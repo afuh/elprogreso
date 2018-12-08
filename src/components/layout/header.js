@@ -2,24 +2,35 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
-import { theme } from '../../utils/style'
+const Wrapper = styled.header.attrs({
+  id: "header"
+})`
+  position: fixed;
+  top: 0;
+  height: ${({ theme }) => theme.position.navHeight};
 
-const Content = styled.header`
-  background: ${({ theme }) => theme.white};
-  box-shadow: ${({ theme }) => theme.shadow};
-  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 20px;
+  width: 100%;
+  z-index: 9;
+
+  background: #0000002e;
+
+  transition: all .4s ease;
 `
 
 const Header = () => (
-  <Content>
+  <Wrapper>
     <Link
-      activeStyle={{ color: theme.red }}
-      style={{ marginRight: 10 }}
+      style={{ marginRight: 10, color: '#fff' }}
       to="/"
     >
       Home
     </Link>
-  </Content>
+  </Wrapper>
 )
 
 export default Header
