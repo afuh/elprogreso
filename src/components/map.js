@@ -58,3 +58,12 @@ Maps.defaultProps = {
   width: 800,
   height: 400
 }
+
+
+
+/*
+<Map
+  latlng={[data.content.contact.info.location.lat, data.content.contact.info.location.lon]}
+  city={"Buenos Aires"}
+/>
+*/

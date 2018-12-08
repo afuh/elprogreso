@@ -31,7 +31,17 @@ export const HomePage = graphql`
       }
     }
     gallery {
+      file {
+        details {
+          image {
+            width
+            height
+          }
+        }
+      }
       fluid(maxWidth: 2000) {
+        src
+        srcSet
         ...GatsbyContentfulFluid_withWebp
       }
     }

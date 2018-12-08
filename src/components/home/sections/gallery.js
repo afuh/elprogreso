@@ -32,13 +32,13 @@ class Gallery extends Component {
     }))
   }
   render() {
-    const { gallery } = this.props
+    const { photos } = this.props
     const { currentImage, isOpen } = this.state
 
     return (
       <>
         <Images
-          photos={gallery}
+          photos={photos}
           onClick={this.openLightbox}
           ImageComponent={({ index, photo, margin, onClick }) => (
             <div onClick={e => onClick(e, { index })}> {/* eslint-disable-line */}
@@ -49,13 +49,13 @@ class Gallery extends Component {
                   height: photo.height,
                   margin
                 }}
-                fluid={photo.gatsby.fluid}
+                fluid={photo.fluid}
               />
             </div>
           )}
         />
         <Lightbox
-          images={gallery}
+          images={photos}
           onClose={this.closeLightbox}
           onClickPrev={this.gotoPrevious}
           onClickNext={this.gotoNext}
@@ -69,7 +69,7 @@ class Gallery extends Component {
 }
 
 Gallery.propTypes = {
-  gallery: PropTypes.array.isRequired
+  photos: PropTypes.array.isRequired
 }
 
 export default Gallery

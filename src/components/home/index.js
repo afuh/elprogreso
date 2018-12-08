@@ -1,14 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Map from '../map'
+import { Productos, Historia, Tradicion } from './sections'
 
-const Home = ({ data }) => (
-  <Map
-    latlng={[data.content.contact.info.location.lat, data.content.contact.info.location.lon]}
-    city={"Buenos Aires"}
-  />
-)
+const Home = ({ data: { content } }) => {
+  const [historia, productos, tradicion] = content.sections
+
+  return (
+    <>
+      <Historia content={historia} />
+      <Productos content={productos} />
+      <Tradicion content={tradicion} />
+    </>
+  )
+}
 
 Home.propTypes = {
   data: PropTypes.object.isRequired
