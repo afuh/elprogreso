@@ -1,17 +1,37 @@
 import { css, createGlobalStyle } from 'styled-components'
 
 export const theme = {
-  black: "#212129",
-  white: "#F9F9FA",
-  gray: "#9F9FA3",
-  deeporange: "#FF5722",
-  shadow: '0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)'
+  red: "#8b0000",
+  darkGray: "#272521",
+  gray: "#756F63",
+  white: "#fff",
+  shadow: '0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)',
+  position: {
+    outerPadding: "4% 0",
+    baseMargin: 4
+  }
 }
+
+export const defaultFont = [
+  'Montserrat',
+  '-apple-system',
+  'BlinkMacSystemFont',
+  '"Segoe UI"',
+  'Roboto',
+  'Oxygen-Sans',
+  'Ubuntu',
+  'Cantarell',
+  '"Helvetica Neue"',
+  'sans-serif'
+].join()
 
 const screenBreak = {
   mobile: 992,
   phone: 650,
-  small: 480
+  small: 480,
+  medium: 1024,
+  xlarge: 1920,
+  xxlarge: 2560
 }
 
 export const media = {
@@ -34,23 +54,24 @@ export const media = {
     @media (max-width: ${n / 16}em) {
       ${inner}
     }
+  `,
+
+  medium: inner => css`
+    @media (min-width: ${screenBreak.medium / 16}em) {
+      ${inner}
+    }
+  `,
+  xlarge: inner => css`
+    @media (min-width: ${screenBreak.xlarge / 16}em) {
+      ${inner}
+    }
+  `,
+  xxlarge: inner => css`
+    @media (min-width: ${screenBreak.xxlarge / 16}em) {
+      ${inner}
+    }
   `
 }
-
-export const flex = opt => css`
-  display: flex;
-
-  flex-direction: ${opt.dir|| "row"};
-  justify-content: ${opt.x || "center"};
-  align-items: ${opt.y || "center"};
-`
-
-export const hover = inner => css`
-  &:hover,
-  &:focus {
-    ${inner}
-  }
-`
 
 export const fontSize = size => css`
   font-size: ${size}rem;
@@ -62,24 +83,20 @@ export const fontSize = size => css`
   ${media.phone(css`
     font-size: ${size - (size/4)}rem;
   `)}
-`
 
-const defaultFont = [
-  '-apple-system',
-  'BlinkMacSystemFont',
-  '"Segoe UI"',
-  'Roboto',
-  'Oxygen-Sans',
-  'Ubuntu',
-  'Cantarell',
-  '"Helvetica Neue"',
-  'sans-serif'
-].join()
+  ${media.xlarge(css`
+    font-size: ${size*1.2}rem;
+  `)}
+
+  ${media.xxlarge(css`
+    font-size: ${size*1.4}rem;
+  `)}
+`
 
 export const GlobalStyle = createGlobalStyle`
   *::selection {
     color: ${theme.white};
-    background: ${theme.black};
+    background: ${theme.red};
   }
 
   html {
@@ -94,34 +111,28 @@ export const GlobalStyle = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
-    font-size: 1.5rem;
     letter-spacing: 0.02rem;
     font-family: ${defaultFont};
+
+    ${fontSize(1.5)}
   }
 
-  h1 { ${fontSize(3.2)}; }
-  h2 { ${fontSize(2.4)}; }
-  h3 { ${fontSize(1.9)}; }
-
   a {
-    color: ${theme.black};
+    color: ${theme.darkGray};
     text-decoration: none;
 
     &:hover,
     &:active,
     &:focus {
-      color: ${theme.deeporange};
-      text-decoration: none;
+      color: ${theme.red};
     }
   }
 
-  p {
-    font-size: 1.4rem;
-  }
-
   button, input {
+    font-family: ${defaultFont};
     &:focus {
       outline: 0;
     }
   }
+
 `

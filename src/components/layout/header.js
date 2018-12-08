@@ -13,7 +13,7 @@ const Content = styled.header`
 const Header = () => (
   <Content>
     <Link
-      activeStyle={{ color: theme.deeporange }}
+      activeStyle={{ color: theme.red }}
       style={{ marginRight: 10 }}
       to="/"
     >
