@@ -1,9 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { Container, Wrapper } from '../../../utils/UI'
 
 const Tradicion = ({ content: { name } }) => (
-  <h2>{name}</h2>
+  <Container>
+    <Wrapper>
+      <h2>{name}</h2>
+    </Wrapper>
+  </Container>
 )
 
 Tradicion.propTypes = {
