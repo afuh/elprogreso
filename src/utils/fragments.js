@@ -46,6 +46,10 @@ export const HomePage = graphql`
     info {
       email
       phoneNumber
+      location {
+        lon
+        lat
+      }
     }
     text {
       childMarkdownRemark {
