@@ -1,13 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Productos, Historia, Tradicion, Contact } from './sections'
+import { Hero, Productos, Historia, Tradicion, Contact } from './sections'
 
 const Home = ({ data: { content } }) => {
   const [historia, productos, tradicion] = content.sections
 
   return (
     <>
+      <Hero content={content.hero} />
       <Historia content={historia} />
       <Productos content={productos} />
       <Tradicion content={tradicion} />
