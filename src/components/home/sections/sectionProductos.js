@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Gallery from './gallery'
+import Gallery from '../gallery'
 
 const Productos = ({ content: { gallery, name } }) => {
   const photos = gallery.reduce((acc, ph) => [
