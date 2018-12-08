@@ -46,9 +46,9 @@ const SEO = ({ title, description, image, pathname }) => (
           <meta property="og:url" content={seo.url} />
           <meta property="og:description" content={seo.description} />
           <meta property="og:image" content={seo.image} />
-          <meta property="og:image:type" content="image/jpeg" />
-          <meta property="og:image:width" content="1440" />
-          <meta property="og:image:height" content="720" />
+          <meta property="og:image:type" content="image/png" />
+          <meta property="og:image:width" content="500" />
+          <meta property="og:image:height" content="400" />
 
           {userTwitter && <meta name="twitter:creator" content={userTwitter} />}
           {userTwitter && <meta name="twitter:site" content={userTwitter} />}

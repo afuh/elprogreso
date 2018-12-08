@@ -1,10 +1,10 @@
 module.exports = {
-  title: 'Confitería El Progreso',
+  title: 'Pastelería El Progreso',
   titleTemplate: '%s | El Progreso',
-  description: "Confitería El Progreso, desde 1919",
-  siteUrl: 'http://example.com', // no trailing slash
+  description: "Pastelería El Progreso, desde 1919",
+  siteUrl: 'https://pasteleriaelprogreso.netlify.com', // no trailing slash
   favicon: '/images/icon-32x32.png',
-  image: '/images/cover-1440x720.jpg',
+  image: '/images/logo_500x400.png',
   userTwitter: '',
   themeColor: '#000',
   backgroundColor: '#fff'
