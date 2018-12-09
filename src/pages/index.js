@@ -7,15 +7,7 @@ import Home from '../components/home'
 
 const HomePage = ({ data }) => (
   <Layout>
-    <Home
-      data={{
-        content: data.content,
-        vignetas: {
-          left: data.vignetaLeft,
-          right: data.vignetaRight
-        }
-      }}
-    />
+    <Home content={data.content} />
   </Layout>
 )
 
@@ -38,15 +30,6 @@ export const query = graphql`
         ...ContactInfo
       }
     }
-    vignetaLeft: contentfulAsset(title: {regex: "/vigneta left/i"}) {
-      fluid(maxWidth: 600) {
-        ...GatsbyContentfulFluid_tracedSVG
-      }
-    }
-    vignetaRight: contentfulAsset(title: {regex: "/vigneta right/i"}) {
-      fluid(maxWidth: 600) {
-        ...GatsbyContentfulFluid_tracedSVG
-      }
-    }
+
   }
 `

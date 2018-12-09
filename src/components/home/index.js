@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { Hero, Productos, Historia, Tradicion, Contact } from './sections'
 
-const Home = ({ data: { content } }) => {
+const Home = ({ content }) => {
   const [historia, productos, tradicion] = content.sections
 
   return (
@@ -18,7 +18,7 @@ const Home = ({ data: { content } }) => {
 }
 
 Home.propTypes = {
-  data: PropTypes.object.isRequired
+  content: PropTypes.object.isRequired
 }
 
 export default Home
