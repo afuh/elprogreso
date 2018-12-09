@@ -1,19 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Container, Wrapper } from '../../../utils/UI'
+import { Section, Wrapper } from '../../../utils/UI'
 import Map from '../map'
 import ContactForm from '../contactForm'
 
 const Contact = ({ content: { info } }) => (
-  <Container>
+  <Section>
     <Wrapper>
       <div style={{ width: "100%", height: 400 }}>
         <Map latlng={[info.location.lat, info.location.lon]} />
       </div>
       <ContactForm />
     </Wrapper>
-  </Container>
+  </Section>
 )
 
 Contact.propTypes = {

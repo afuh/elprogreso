@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 
 import { media } from '../style'
 
-export const Container = styled.section`
+export const Section = styled.section`
   padding: ${({ theme }) => theme.position.outerPadding};
 `
 

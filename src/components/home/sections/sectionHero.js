@@ -6,10 +6,10 @@ import { FaChevronDown } from 'react-icons/fa'
 import Fade from 'react-reveal/Fade'
 import { scroller } from 'react-scroll'
 
-import { Container, Wrapper } from '../../../utils/UI'
+import { Section, Wrapper } from '../../../utils/UI'
 import { media } from '../../../utils/style'
 
-const HeroWrapper = styled(Container)`
+const HeroWrapper = styled(Section)`
   padding: 0;
   width: 100%;
   height: 100vh;

@@ -1,14 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Container, Wrapper } from '../../../utils/UI'
+import { Section, Wrapper, Header } from '../../../utils/UI'
 
 const Historia = ({ content: { name } }) => (
-  <Container id='historia'>
-    <Wrapper>
-      <h2>{name}</h2>
-    </Wrapper>
-  </Container>
+  <>
+    <Section
+      style={{ padding: 0 }}
+      id='historia'
+    >
+      <Header title={name} />
+      <Wrapper>
+      </Wrapper>
+    </Section>
+  </>
 )
 
 Historia.propTypes = {

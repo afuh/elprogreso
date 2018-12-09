@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Container, Wrapper } from '../../../utils/UI'
+import { Section, Wrapper } from '../../../utils/UI'
 import Gallery from '../gallery'
 
 const Productos = ({ content: { gallery, name } }) => {
@@ -18,12 +18,12 @@ const Productos = ({ content: { gallery, name } }) => {
   ], [])
 
   return (
-    <Container>
+    <Section>
       <Wrapper>
         <h2>{name}</h2>
         <Gallery photos={photos}/>
       </Wrapper>
-    </Container>
+    </Section>
   )
 }
 
