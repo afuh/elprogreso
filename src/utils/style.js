@@ -14,7 +14,7 @@ export const theme = {
 }
 
 export const defaultFont = [
-  'Montserrat',
+  'Merriweather',
   '-apple-system',
   'BlinkMacSystemFont',
   '"Segoe UI"',

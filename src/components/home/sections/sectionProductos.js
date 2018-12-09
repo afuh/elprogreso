@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Section, Wrapper } from '../../../utils/UI'
+import { Section, Wrapper, Header } from '../../../utils/UI'
 import Gallery from '../gallery'
 
 const Productos = ({ content: { gallery, name } }) => {
@@ -19,8 +19,8 @@ const Productos = ({ content: { gallery, name } }) => {
 
   return (
     <Section>
+      <Header title={name} />
       <Wrapper>
-        <h2>{name}</h2>
         <Gallery photos={photos}/>
       </Wrapper>
     </Section>

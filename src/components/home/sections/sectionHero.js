@@ -44,7 +44,7 @@ const Text = styled.div`
   text-align: center;
 
   h1 {
-    font-weight: 800;
+    font-weight: 900;
   }
 
   a {
@@ -52,7 +52,7 @@ const Text = styled.div`
   }
 
   a.phone-number {
-    display: inline;
+    display: none;
   }
 
   ${media.phone(css`
@@ -135,8 +135,7 @@ const Hero = ({ content }) => (
           <span className='phone-number'>
             {content.contact.phoneNumber}
           </span>
-          <a
-            className='phone-number'
+          <a className='phone-number'
             href={"tel:011"+content.contact.phoneNumber}
           >
             {content.contact.phoneNumber}

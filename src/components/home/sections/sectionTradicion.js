@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Section, Wrapper } from '../../../utils/UI'
+import { Section, Wrapper, Header } from '../../../utils/UI'
 
 const Tradicion = ({ content: { name } }) => (
   <Section>
+    <Header title={name} />
     <Wrapper>
-      <h2>{name}</h2>
     </Wrapper>
   </Section>
 )

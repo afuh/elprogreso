@@ -21,8 +21,8 @@ module.exports = {
       options: {
         fonts: [
           {
-            family: "Montserrat",
-            variants: ["400", "500", "700", "800"]
+            family: "Merriweather",
+            variants: ["400", "700", "900"]
           }
         ]
       }
