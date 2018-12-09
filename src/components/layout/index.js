@@ -5,7 +5,7 @@ import { Location } from '@reach/router'
 import styled, { ThemeProvider, css } from 'styled-components'
 
 import Footer from './footer'
-import Navigation from './navigation'
+// import Navigation from './navigation'
 
 import SEO from '../../utils/seo'
 import { theme, GlobalStyle, media } from '../../utils/style'
@@ -13,7 +13,7 @@ import { theme, GlobalStyle, media } from '../../utils/style'
 const Main = styled.main.attrs({
   id: "page-wrap"
 })`
-  margin: ${({ theme }) => theme.position.navHeight} auto;
+  ${'' /* margin: ${({ theme }) => theme.position.navHeight} auto; */}
 
   ${media.phone(css`
     margin: 0 auto;
@@ -29,7 +29,7 @@ const Layout = ({ children }) => (
         <SEO />
         <ThemeProvider theme={theme}>
           <div id="outer-container">
-            <Navigation />
+            {/* <Navigation /> */}
             <Main>
               {children}
             </Main>
