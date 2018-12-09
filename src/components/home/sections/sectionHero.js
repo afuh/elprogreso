@@ -8,8 +8,8 @@ const Hero = ({ content }) => (
   <Container>
     <Wrapper>
       <GatsbtImg
-        style={{ maxWidth: 800 }}
         alt='El Progreso'
+        style={{ maxWidth: 800 }}
         fluid={content.logo.fluid}
       />
     </Wrapper>

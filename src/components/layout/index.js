@@ -4,40 +4,20 @@ import { StaticQuery, graphql } from 'gatsby'
 import { Location } from '@reach/router'
 import styled, { ThemeProvider, css } from 'styled-components'
 
-import Header from './header'
 import Footer from './footer'
-import BurgerMenu from './burgerMenu'
+import Navigation from './navigation'
 
 import SEO from '../../utils/seo'
 import { theme, GlobalStyle, media } from '../../utils/style'
-
-const Container = styled.div.attrs({
-  id: "outer-container"
-})`
-  #burger {
-    display: none;
-  }
-
-  ${media.phone(css`
-    #header {
-      display: none;
-    }
-
-    #burger {
-      display: block;
-    }
-
-    #page-wrap {
-      margin: 0 auto;
-    }
-
-  `)}
-`
 
 const Main = styled.main.attrs({
   id: "page-wrap"
 })`
   margin: ${({ theme }) => theme.position.navHeight} auto;
+
+  ${media.phone(css`
+    margin: 0 auto;
+  `)}
 `
 
 const Layout = ({ children }) => (
@@ -48,14 +28,13 @@ const Layout = ({ children }) => (
         <GlobalStyle />
         <SEO />
         <ThemeProvider theme={theme}>
-          <Container>
-            <Header/>
-            <BurgerMenu/>
+          <div id="outer-container">
+            <Navigation />
             <Main>
               {children}
             </Main>
             <Footer social={links} />
-          </Container>
+          </div>
         </ThemeProvider>
       </>
     )}

@@ -1,10 +1,10 @@
 import React, { Component } from "react"
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import push from "react-burger-menu/lib/menus/push"
 import styled from 'styled-components'
 
-import { theme } from '../../utils/style'
+import { theme } from '../../../utils/style'
 
 const Menu = styled(push)`
   /* Position and sizing of clickable cross button */
@@ -71,6 +71,7 @@ class BurgerMenu extends Component {
   }
 
   render() {
+    const { navigation } = this.props
     const { isOpen } = this.state
 
     return (
@@ -82,17 +83,24 @@ class BurgerMenu extends Component {
           pageWrapId={"page-wrap"}
           outerContainerId={"outer-container"}
         >
-          <Link
-            activeStyle={{ color: theme.active }}
-            style={{ marginRight: 10 }}
-            to='/'
-          >
-            Home
-          </Link>
+          {navigation.map(item => (
+            <Link
+              key={item.name}
+              activeStyle={{ color: theme.active }}
+              style={{ marginRight: 10 }}
+              to={item.path}
+            >
+              {item.name}
+            </Link>
+          ))}
         </Menu>
       </nav>
     )
   }
+}
+
+BurgerMenu.propTypes = {
+  navigation: PropTypes.array.isRequired
 }
 
 export default BurgerMenu

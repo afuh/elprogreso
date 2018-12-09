@@ -97,6 +97,8 @@ class Gallery extends Component {
               <h2>{photo.caption}</h2>
             </Overlay>
             <GatsbyImg
+              alt={photo.caption}
+              title={photo.caption}
               imgStyle={{ objectFit: "cover" }}
               style={{ height: "100%", maxHeight: 400 }}
               fluid={photo.fluid}

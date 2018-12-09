@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
@@ -22,15 +23,22 @@ const Wrapper = styled.header.attrs({
   transition: all .4s ease;
 `
 
-const Header = () => (
+const Header = ({ navigation }) => (
   <Wrapper>
-    <Link
-      style={{ marginRight: 10, color: '#fff' }}
-      to="/"
-    >
-      Home
-    </Link>
+    {navigation.map(item => (
+      <Link
+        key={item.name}
+        style={{ marginRight: 10, color: '#fff' }}
+        to={item.path}
+      >
+        {item.name}
+      </Link>
+    ))}
   </Wrapper>
 )
+
+Header.propTypes = {
+  navigation: PropTypes.array.isRequired
+}
 
 export default Header
