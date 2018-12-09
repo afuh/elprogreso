@@ -63,6 +63,11 @@ export const HomePage = graphql`
 
   fragment ContactInfo on ContentfulFooter {
     info {
+      address {
+        md: childMarkdownRemark {
+          body: rawMarkdownBody
+        }
+      }
       email
       phoneNumber
       location {
@@ -70,6 +75,7 @@ export const HomePage = graphql`
         lat
       }
     }
+    name
     text {
       md: childMarkdownRemark {
         body: rawMarkdownBody

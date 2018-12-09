@@ -8,8 +8,7 @@ const findIcon = name => {
 }
 
 const Content = styled.footer`
-  background: ${({ theme }) => theme.white};
-  box-shadow: ${({ theme }) => theme.shadow};
+  background: ${({ theme }) => theme.red};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,10 +16,21 @@ const Content = styled.footer`
 
 const Icon = styled.a`
   border: none;
-  padding: 10px;
+  padding: 16px;
   margin: 10px;
-  font-size: 22px;
-  opacity: 0.6;
+  font-size: 2.4rem;
+  color: ${({ theme }) => theme.white};
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+
+  :hover {
+    color: ${({ theme }) => theme.red};
+    background: ${({ theme }) => theme.white};
+  }
+
+  transition: background .3s;
 `
 
 const Footer = ({ social }) => (

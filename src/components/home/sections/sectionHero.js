@@ -6,28 +6,12 @@ import { FaChevronDown } from 'react-icons/fa'
 import Fade from 'react-reveal/Fade'
 import { scroller } from 'react-scroll'
 
-import { Section, Wrapper } from '../../../utils/UI'
+import { Section, Wrapper, BackgroundImage, Contact } from '../../../utils/UI'
 import { media } from '../../../utils/style'
 
 const HeroWrapper = styled(Section)`
-  padding: 0;
   width: 100%;
   height: 100vh;
-  position: relative;
-`
-
-const Background = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: -1;
-`
-
-const Opacity = styled(Background)`
-  background: linear-gradient(to top, rgba(0,0,0, 0.7) 30%, rgba(0,0,0, 0.1));
-  z-index: 1;
 `
 
 const Content = styled(Wrapper)`
@@ -37,32 +21,6 @@ const Content = styled(Wrapper)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`
-
-const Text = styled.div`
-  color: ${({ theme }) => theme.white};
-  text-align: center;
-
-  h1 {
-    font-weight: 900;
-  }
-
-  a {
-    color: ${({ theme }) => theme.white};
-  }
-
-  a.phone-number {
-    display: none;
-  }
-
-  ${media.phone(css`
-    a.phone-number {
-      display: inline;
-    }
-    span.phone-number {
-      display: none;
-    }
-  `)}
 `
 
 const Icon = styled(FaChevronDown)`
@@ -99,24 +57,13 @@ const Logo = styled(GatsbyImg)`
       display: none;
     }
   `)}
-
-`
-
-const BackgroundImage = styled(GatsbyImg)`
-  height: 100%;
-  width: 100%;
 `
 
 const Hero = ({ content }) => (
   <HeroWrapper>
-    <Background>
-      <Opacity />
-      <BackgroundImage
-        imgStyle={{ objectFit: "cover" }}
-        alt={content.backgroundImage.title}
-        fluid={content.backgroundImage.fluid}
-      />
-    </Background>
+    <BackgroundImage
+      image={content.backgroundImage}
+    />
     <Content>
       <Logo
         className='desktop'
@@ -128,23 +75,9 @@ const Hero = ({ content }) => (
         alt={content.logoMobile.title}
         fluid={content.logoMobile.fluid}
       />
-      <Text>
-        <h1>
-          {content.contact.address.md.body}
-          {` `}-{` `}
-          <span className='phone-number'>
-            {content.contact.phoneNumber}
-          </span>
-          <a className='phone-number'
-            href={"tel:011"+content.contact.phoneNumber}
-          >
-            {content.contact.phoneNumber}
-          </a>
-        </h1>
-        <h2>
-          <a href={"mailto:"+content.contact.email}>{content.contact.email}</a>
-        </h2>
-      </Text>
+      <Contact
+        contact={content.contact}
+      />
       <Fade delay={500}>
         <Icon
           onClick={() => scroller.scrollTo("historia", {

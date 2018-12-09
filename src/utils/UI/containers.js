@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import { media } from '../style'
 
 export const Section = styled.section`
-  padding: ${({ theme }) => theme.position.outerPadding};
+  position: relative;
 `
 
 export const Wrapper = styled.div`
