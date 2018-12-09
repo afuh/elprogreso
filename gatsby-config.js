@@ -17,6 +17,17 @@ module.exports = {
     'gatsby-transformer-remark',
     'gatsby-plugin-robots-txt',
     {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: "Montserrat",
+            variants: ["400", "500", "700", "800"]
+          }
+        ]
+      }
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: siteConfig.title,

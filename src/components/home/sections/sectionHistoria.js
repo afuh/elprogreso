@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { Container, Wrapper } from '../../../utils/UI'
 
 const Historia = ({ content: { name } }) => (
-  <Container>
+  <Container id='historia'>
     <Wrapper>
       <h2>{name}</h2>
     </Wrapper>

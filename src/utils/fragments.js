@@ -3,19 +3,27 @@ import { graphql } from 'gatsby'
 export const HomePage = graphql`
   fragment Hero on ContentfulHero {
     logo {
+      title
       fluid(maxWidth: 800) {
-        ...GatsbyContentfulFluid_tracedSVG
+        ...GatsbyContentfulFluid_withWebp_noBase64
+      }
+    }
+    logoMobile {
+      title
+      fluid(maxWidth: 800) {
+        ...GatsbyContentfulFluid_withWebp_noBase64
       }
     }
     backgroundImage {
-      fluid(maxWidth: 4096) {
+      title
+      fluid(maxWidth: 2048) {
         ...GatsbyContentfulFluid_withWebp
       }
     }
     contact {
       address {
-        childMarkdownRemark {
-          rawMarkdownBody
+        md: childMarkdownRemark {
+          body: rawMarkdownBody
         }
       }
       phoneNumber
@@ -26,8 +34,8 @@ export const HomePage = graphql`
   fragment Section on ContentfulSection {
     name
     text {
-      childMarkdownRemark {
-        rawMarkdownBody
+      md: childMarkdownRemark {
+        body: rawMarkdownBody
       }
     }
     gallery {
@@ -63,8 +71,8 @@ export const HomePage = graphql`
       }
     }
     text {
-      childMarkdownRemark {
-        rawMarkdownBody
+      md: childMarkdownRemark {
+        body: rawMarkdownBody
       }
     }
   }
