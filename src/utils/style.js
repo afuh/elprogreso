@@ -154,5 +154,10 @@ export const GlobalStyle = createGlobalStyle`
       background: #373a47;
     }
   }
+`
 
+export const border = css`
+  border: 10px solid transparent;
+  border-radius: 40px;
+  overflow: hidden;
 `

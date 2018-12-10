@@ -6,12 +6,17 @@ import Fade from 'react-reveal/Fade'
 import styled, { css } from 'styled-components'
 
 import { Wrapper } from './'
-import { fontSize, media } from '../style'
+import { fontSize, media, border } from '../style'
 
 const Container = styled.header`
   background: ${({ theme }) => theme.red};
   padding: 1% 0;
-  margin-bottom: 40px;
+
+  ${({ footer, theme }) => !footer && css`
+    ${border}
+    border: 10px solid ${theme.white};
+    transform: translateY(-10px);
+  `}
 `
 
 export const Content = styled.div`
@@ -25,7 +30,6 @@ const Vigneta = styled(GatsbyImg)`
   width: 100%;
   flex: 1;
 
-
   ${media.phone(css`
     transform: translateY(0);
   `)}
@@ -34,10 +38,11 @@ const Vigneta = styled(GatsbyImg)`
 const Title = styled.h2`
   flex: 1;
   text-align: center;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: 0.1rem;
   white-space: nowrap;
-  ${fontSize(3.8)};
+  font-style: italic;
+  ${fontSize(4.4)};
 
   ${media.mobile(css`
     flex: 1;
@@ -48,11 +53,11 @@ const Title = styled.h2`
   `)}
 `
 
-export const Header = ({ title }) => (
+export const Header = ({ title, footer }) => (
   <StaticQuery
     query={query}
     render={({ left, right }) => (
-      <Container>
+      <Container footer={footer}>
         <Wrapper>
           <Fade>
             <Content>
@@ -74,7 +79,8 @@ export const Header = ({ title }) => (
 )
 
 Header.propTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  footer: PropTypes.bool
 }
 
 const query = graphql`

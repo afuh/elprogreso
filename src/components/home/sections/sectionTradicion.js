@@ -5,18 +5,20 @@ import GatsbyImg from 'gatsby-image'
 import Fade from 'react-reveal/Fade'
 
 import { Section as St, Wrapper as Wr, BackgroundImage } from '../../../utils/UI'
-import { fontSize } from '../../../utils/style'
+import { fontSize, border } from '../../../utils/style'
 
 const Section = styled(St)`
   padding: 0;
   width: 100%;
-  border: 20px solid white;
-  border-radius: 40px;
-  overflow: hidden;
+  height: 100vh;
+  margin-top: 100px;
+
+  ${border}
 `
 
 const Wrapper = styled(Wr)`
   padding: 8% 0;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;

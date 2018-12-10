@@ -7,11 +7,13 @@ import Fade from 'react-reveal/Fade'
 import { scroller } from 'react-scroll'
 
 import { Section, Wrapper, BackgroundImage, Contact } from '../../../utils/UI'
-import { media } from '../../../utils/style'
+import { media, border } from '../../../utils/style'
 
 const HeroWrapper = styled(Section)`
   width: 100%;
   height: 100vh;
+
+  ${border}
 `
 
 const Content = styled(Wrapper)`

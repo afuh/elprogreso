@@ -64,7 +64,7 @@ const FormWrapper = styled.div`
 
 const Contact = ({ content, social }) => (
   <Section>
-    <Header title={content.name} />
+    <Header title={content.name} footer/>
     <Wrapper>
       <Info contact={content.info} />
       <Social social={social}/>

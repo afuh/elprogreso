@@ -22,7 +22,7 @@ module.exports = {
         fonts: [
           {
             family: "Merriweather",
-            variants: ["400", "700", "900"]
+            variants: ["400", "700", "900", "700i", "900i"]
           },
           {
             family: "Playfair Display",
