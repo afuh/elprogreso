@@ -19,7 +19,7 @@ const Home = ({ content, social }) => {
 
 Home.propTypes = {
   content: PropTypes.object.isRequired,
-  social: PropTypes.object.isRequired
+  social: PropTypes.array.isRequired
 }
 
 export default Home
