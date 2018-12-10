@@ -1,10 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StaticQuery, graphql } from 'gatsby'
 import { Location } from '@reach/router'
 import styled, { ThemeProvider, css } from 'styled-components'
 
-import Footer from './footer'
 // import Navigation from './navigation'
 
 import SEO from '../../utils/seo'
@@ -21,24 +19,18 @@ const Main = styled.main.attrs({
 `
 
 const Layout = ({ children }) => (
-  <StaticQuery
-    query={query}
-    render={({ social: { links } }) => (
-      <>
-        <GlobalStyle />
-        <SEO />
-        <ThemeProvider theme={theme}>
-          <div id="outer-container">
-            {/* <Navigation /> */}
-            <Main>
-              {children}
-            </Main>
-            <Footer social={links} />
-          </div>
-        </ThemeProvider>
-      </>
-    )}
-  />
+  <>
+    <GlobalStyle />
+    <SEO />
+    <ThemeProvider theme={theme}>
+      <div id="outer-container">
+        {/* <Navigation /> */}
+        <Main>
+          {children}
+        </Main>
+      </div>
+    </ThemeProvider>
+  </>
 )
 
 Layout.propTypes = {
@@ -55,14 +47,3 @@ export default ({ children }) => (
     )}
   </Location>
 )
-
-const query = graphql`
-  query LAYOUT_QUERY {
-    social: contentfulSocialLinks {
-      links {
-        name
-        url
-      }
-    }
-  }
-`

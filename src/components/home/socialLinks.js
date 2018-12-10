@@ -7,8 +7,7 @@ const findIcon = name => {
   return <Component />
 }
 
-const Content = styled.footer`
-  background: ${({ theme }) => theme.red};
+const Content = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +15,7 @@ const Content = styled.footer`
 
 const Icon = styled.a`
   border: none;
-  padding: 16px;
+  padding: 10px;
   margin: 10px;
   font-size: 2.4rem;
   color: ${({ theme }) => theme.white};
@@ -33,7 +32,7 @@ const Icon = styled.a`
   transition: background .3s;
 `
 
-const Footer = ({ social }) => (
+const Social = ({ social }) => (
   <Content>
     {social.map(item => (
       <Icon
@@ -46,8 +45,8 @@ const Footer = ({ social }) => (
   </Content>
 )
 
-Footer.propTypes = {
+Social.propTypes = {
   social: PropTypes.array.isRequired
 }
 
-export default Footer
+export default Social

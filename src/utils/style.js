@@ -136,6 +136,11 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .pigeon-attribution {
+    background: transparent !important;
+    padding: 2px 10px !important;
+  }
+
   /* Color/shape of burger icon bars */
   .bm-burger-button {
     background: white;

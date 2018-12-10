@@ -4,9 +4,9 @@ import styled, { css } from 'styled-components'
 
 export const Button = styled.button`
   border-radius: 6px;
-  padding: 10px;
-  font-size: 1rem;
-  font-weight: 700;
+  padding: 10px 40px;
+  font-size: 1.2rem;
+  font-weight: 900;
   letter-spacing: 0.2em;
   line-height: 2;
   margin-top: 10px;
@@ -15,11 +15,19 @@ export const Button = styled.button`
   cursor: pointer;
   outline: none;
 
+  align-self: flex-end;
+
   :active,
   :focus,
   :hover {
-    box-shadow: ${({ theme }) => theme.shadow};
+    ${({ theme }) => css`
+      border: 1px solid ${theme.darkGray};
+      background: ${theme.darkGray};
+      color: ${theme.white};
+    `}
   }
+
+  transition: all .2s;
 `
 
 const inputStyle = css`
@@ -36,12 +44,15 @@ const inputStyle = css`
 `
 
 const Form = styled.form`
-  margin-top: 10px;
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
 `
 
 const Label = styled.label`
   display: block;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   line-height: 1;
@@ -50,14 +61,12 @@ const Label = styled.label`
 
 const Input = styled.input`
   ${inputStyle}
-  max-width: 400px;
   width: 100%;
 `
 
 const Textarea = styled.textarea`
   ${inputStyle}
   height: 14em;
-  max-width: 400px;
   width: 100%;
 `
 
