@@ -82,8 +82,7 @@ const Hero = ({ content }) => (
         <Icon
           onClick={() => scroller.scrollTo("historia", {
             duration: 1000,
-            smooth: "easeOutQuint",
-            offset: -40
+            smooth: "easeOutQuint"
           })}
         />
       </Fade>

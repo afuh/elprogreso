@@ -23,6 +23,10 @@ module.exports = {
           {
             family: "Merriweather",
             variants: ["400", "700", "900"]
+          },
+          {
+            family: "Playfair Display",
+            variants: ["700", "700i"]
           }
         ]
       }
