@@ -11,8 +11,8 @@ const Home = ({ content, social }) => {
       <Hero content={content.hero} />
       <Historia content={historia} />
       <Productos content={productos} />
-      <Tradicion content={tradicion} />
       <Galeria content={galeria} />
+      <Tradicion content={tradicion} />
       <Contact content={content.contact} social={social}/>
     </>
   )

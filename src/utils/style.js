@@ -9,7 +9,7 @@ export const theme = {
   position: {
     navHeight: "70px",
     outerPadding: "4% 0",
-    baseMargin: 4
+    baseMargin: 6
   }
 }
 
