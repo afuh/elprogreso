@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Hero, Productos, Historia, Tradicion, Contact } from './sections'
+import { Hero, Productos, Historia, Tradicion, Galeria, Contact } from './sections'
 
 const Home = ({ content, social }) => {
-  const [historia, productos, tradicion] = content.sections
+  const [historia, productos, tradicion, galeria] = content.sections
 
   return (
     <>
@@ -12,6 +12,7 @@ const Home = ({ content, social }) => {
       <Historia content={historia} />
       <Productos content={productos} />
       <Tradicion content={tradicion} />
+      <Galeria content={galeria} />
       <Contact content={content.contact} social={social}/>
     </>
   )

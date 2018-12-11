@@ -38,6 +38,7 @@ const Overlay = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  text-align: center;
   color: white;
   position: absolute;
   bottom: 0;
