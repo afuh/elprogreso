@@ -35,7 +35,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: siteConfig.title,
-        short_name: siteConfig.title,
+        short_name: siteConfig.shortName,
         description: siteConfig.description,
         start_url: "/",
         background_color: siteConfig.backgroundColor,

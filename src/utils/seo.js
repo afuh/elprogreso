@@ -13,9 +13,7 @@ const SEO = ({ title, description, image, pathname }) => (
           defaultDescription,
           defaultImage,
           siteUrl,
-          titleTemplate,
-          favicon,
-          userTwitter
+          favicon
         }
       }
     }) => {
@@ -30,7 +28,6 @@ const SEO = ({ title, description, image, pathname }) => (
       return (
         <Helmet
           htmlAttributes={{ lang: "en" }}
-          titleTemplate={titleTemplate}
           title={seo.title}
         >
           <link rel="shortcut icon" href={seo.favicon}/>
@@ -50,8 +47,6 @@ const SEO = ({ title, description, image, pathname }) => (
           <meta property="og:image:width" content="500" />
           <meta property="og:image:height" content="400" />
 
-          {userTwitter && <meta name="twitter:creator" content={userTwitter} />}
-          {userTwitter && <meta name="twitter:site" content={userTwitter} />}
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={seo.title} />
           <meta name="twitter:url" content={seo.url} />
@@ -86,9 +81,7 @@ const query = graphql`
         defaultDescription: description
         siteUrl
         defaultImage: image
-        titleTemplate
         favicon
-        userTwitter
       }
     }
   }
