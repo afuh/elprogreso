@@ -21,28 +21,34 @@ const Inner = styled.div`
 `
 
 const Historia = ({ content }) => {
-  const [intro, _, final] = content.text.md.body.split("\n") // eslint-disable-line
+  const [intro, medio, final] = content.text.md.body.split("\n").filter(item => item.length > 0)
+  const [vieja, renovada] = content.gallery
 
   return (
     <>
-    <Section id='historia'>
-      <Header title={content.name} />
-      <Wrapper>
-        <Inner>
-          <Text>{intro}</Text>
-          {content.gallery.map(photo => (
+      <Section id='historia'>
+        <Header title={content.name} />
+        <Wrapper>
+          <Inner>
+            <Text>{intro}</Text>
             <GatsbyImg
               style={{ width: "100%", borderRadius: 20 }}
-              key={photo.title}
-              alt={photo.title}
-              fluid={photo.fluid}
+              key={vieja.title}
+              alt={vieja.title}
+              fluid={vieja.fluid}
             />
-          ))}
-          <Text>{final}</Text>
-        </Inner>
-      </Wrapper>
-    </Section>
-  </>
+            <Text>{medio}</Text>
+            <GatsbyImg
+              style={{ width: "100%", borderRadius: 20 }}
+              key={renovada.title}
+              alt={renovada.title}
+              fluid={renovada.fluid}
+            />
+            <Text>{final}</Text>
+          </Inner>
+        </Wrapper>
+      </Section>
+    </>
   )
 }
 
