@@ -90,7 +90,7 @@ class Gallery extends Component {
       <Wrapper>
         {photos.map((photo, i) => (
           <ImageWrapper
-            big={!!((i === 0 || i === 9))}
+            big={!!((i === 0 || i === 9 || i === 14))}
             key={i}
             onClick={() => this.openLightbox(i)}
           >

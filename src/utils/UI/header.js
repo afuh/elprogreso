@@ -6,21 +6,13 @@ import Fade from 'react-reveal/Fade'
 import styled, { css } from 'styled-components'
 
 import { Wrapper } from './'
-import { fontSize, media, border } from '../style'
+import { fontSize, media } from '../style'
 
 const Container = styled.header`
-  background: ${({ theme }) => theme.red};
   padding: 1% 0;
-
-  ${({ footer, theme }) => !footer && css`
-    ${border}
-    border: 10px solid ${theme.white};
-    transform: translateY(-10px);
-  `}
 `
 
 export const Content = styled.div`
-  color: ${({ theme }) => theme.white};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,10 +21,6 @@ export const Content = styled.div`
 const Vigneta = styled(GatsbyImg)`
   width: 100%;
   flex: 1;
-
-  ${media.phone(css`
-    transform: translateY(0);
-  `)}
 `
 
 const Title = styled.h2`
@@ -42,6 +30,7 @@ const Title = styled.h2`
   letter-spacing: 0.1rem;
   white-space: nowrap;
   font-style: italic;
+  color: ${({ theme }) => theme.red};
   ${fontSize(4.4)};
 
   ${media.mobile(css`
