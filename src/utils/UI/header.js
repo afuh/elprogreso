@@ -9,7 +9,7 @@ import { Wrapper } from './'
 import { fontSize, media } from '../style'
 
 const Container = styled.header`
-  padding: 1% 0;
+  padding: 2% 0;
 `
 
 export const Content = styled.div`
@@ -40,24 +40,32 @@ const Title = styled.h2`
   ${media.phone(css`
     white-space: normal;
   `)}
+
+  ${({ theme, footer }) => footer && css`
+    color: ${theme.white};
+  `};
 `
 
 export const Header = ({ title, footer }) => (
   <StaticQuery
     query={query}
-    render={({ left, right }) => (
-      <Container footer={footer}>
+    render={({ left, right, wLeft, wRight }) => (
+      <Container>
         <Wrapper>
           <Fade>
             <Content>
               <Vigneta
                 alt='Vignetas'
-                fluid={left.fluid}
+                fluid={!footer ? left.fluid : wLeft.fluid}
               />
-              <Title>{title}</Title>
+              <Title
+                footer={footer}
+              >
+                {title}
+              </Title>
               <Vigneta
                 alt='Vignetas'
-                fluid={right.fluid}
+                fluid={!footer ? right.fluid : wRight.fluid}
               />
             </Content>
           </Fade>
@@ -80,6 +88,16 @@ const query = graphql`
       }
     }
     right: contentfulAsset(title: {regex: "/vigneta right/i"}) {
+      fluid(maxWidth: 600) {
+        ...GatsbyContentfulFluid_tracedSVG
+      }
+    }
+    wLeft: contentfulAsset(title: {regex: "/vigneta-white left/i"}) {
+      fluid(maxWidth: 600) {
+        ...GatsbyContentfulFluid_tracedSVG
+      }
+    }
+    wRight: contentfulAsset(title: {regex: "/vigneta-white right/i"}) {
       fluid(maxWidth: 600) {
         ...GatsbyContentfulFluid_tracedSVG
       }

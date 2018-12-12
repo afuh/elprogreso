@@ -12,6 +12,7 @@ import Social from '../socialLinks'
 const Section = styled(st)`
   background: ${({ theme }) => theme.red};
   padding-bottom: 140px;
+  padding-top: 40px;
 `
 
 const Wrapper = styled(wr)`

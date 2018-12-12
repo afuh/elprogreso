@@ -55,7 +55,7 @@ export const HomePage = graphql`
       }
     }
     backgroundImage{
-      fluid(maxWidth: 4096) {
+      fluid(maxWidth: 2000) {
         ...GatsbyContentfulFluid_withWebp
       }
     }

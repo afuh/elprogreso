@@ -33,14 +33,12 @@ const Historia = ({ content }) => {
             <Text>{intro}</Text>
             <GatsbyImg
               style={{ width: "100%", borderRadius: 20 }}
-              key={vieja.title}
               alt={vieja.title}
               fluid={vieja.fluid}
             />
             <Text>{medio}</Text>
             <GatsbyImg
               style={{ width: "100%", borderRadius: 20 }}
-              key={renovada.title}
               alt={renovada.title}
               fluid={renovada.fluid}
             />
