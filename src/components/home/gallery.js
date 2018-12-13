@@ -55,6 +55,47 @@ const Overlay = styled.div`
   transition: opacity ease-in-out 0.3s;
 `
 
+const Photos = ({ imageArray, openLightbox, set }) => {
+  const big = i => {
+    if (set === 1) {
+      return !!((i === 0 || i === 5))
+    }
+
+    return !!((i === 6 || i === 14))
+  }
+
+  return (
+    <Wrapper>
+      {imageArray.map((photo, i) =>
+        (set === 1 ? i < 6 : i >= 6) && (
+          <ImageWrapper
+            big={big(i)}
+            key={i}
+            onClick={() => openLightbox(i)}
+          >
+            <Overlay>
+              <h2>{photo.caption}</h2>
+            </Overlay>
+            <GatsbyImg
+              imgStyle={{ objectFit: "cover" }}
+              style={{ height: "100%", maxHeight: 400 }}
+              alt={photo.caption}
+              title={photo.caption}
+              fluid={photo.fluid}
+            />
+          </ImageWrapper>
+        )
+      )}
+    </Wrapper>
+  )
+}
+
+Photos.propTypes = {
+  imageArray: PropTypes.array.isRequired,
+  openLightbox: PropTypes.func.isRequired,
+  set: PropTypes.number
+}
+
 class Gallery extends Component {
   state = {
     currentImage: 0
@@ -83,29 +124,23 @@ class Gallery extends Component {
     }))
   }
   render() {
-    const { photos } = this.props
+    const { photos, firstText, secondText } = this.props
     const { currentImage, isOpen } = this.state
 
     return (
-      <Wrapper>
-        {photos.map((photo, i) => (
-          <ImageWrapper
-            big={!!((i === 0 || i === 9 || i === 14))}
-            key={i}
-            onClick={() => this.openLightbox(i)}
-          >
-            <Overlay>
-              <h2>{photo.caption}</h2>
-            </Overlay>
-            <GatsbyImg
-              alt={photo.caption}
-              title={photo.caption}
-              imgStyle={{ objectFit: "cover" }}
-              style={{ height: "100%", maxHeight: 400 }}
-              fluid={photo.fluid}
-            />
-          </ImageWrapper>
-        ))}
+      <>
+        {firstText}
+        <Photos
+          imageArray={photos}
+          openLightbox={this.openLightbox}
+          set={1}
+        />
+        {secondText}
+        <Photos
+          imageArray={photos}
+          openLightbox={this.openLightbox}
+          set={2}
+        />
         <Lightbox
           images={photos}
           onClose={this.closeLightbox}
@@ -115,13 +150,15 @@ class Gallery extends Component {
           isOpen={isOpen}
           backdropClosesModal
         />
-      </Wrapper>
+      </>
     )
   }
 }
 
 Gallery.propTypes = {
-  photos: PropTypes.array.isRequired
+  photos: PropTypes.array.isRequired,
+  firstText: PropTypes.element,
+  secondText: PropTypes.element
 }
 
 export default Gallery

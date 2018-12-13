@@ -77,14 +77,16 @@ const Hero = ({ content }) => (
         alt={content.logoMobile.title}
         fluid={content.logoMobile.fluid}
       />
-      <Contact
-        contact={content.contact}
-      />
+      <Fade delay={300}>
+        <Contact
+          contact={content.contact}
+        />
+      </Fade>
       <Fade delay={500}>
         <Icon
-          onClick={() => scroller.scrollTo("historia", {
+          onClick={() => scroller.scrollTo("nuestra-historia", {
             duration: 1000,
-            smooth: "easeOutQuint"
+            smooth: "ease"
           })}
         />
       </Fade>

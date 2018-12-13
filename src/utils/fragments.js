@@ -38,6 +38,11 @@ export const HomePage = graphql`
         body: rawMarkdownBody
       }
     }
+    secondText {
+      md: childMarkdownRemark {
+        body: rawMarkdownBody
+      }
+    }
     gallery {
       title
       file {
@@ -48,14 +53,14 @@ export const HomePage = graphql`
           }
         }
       }
-      fluid(maxWidth: 2000) {
+      fluid(maxWidth: 1000) {
         src
         srcSet
         ...GatsbyContentfulFluid_withWebp
       }
     }
     backgroundImage{
-      fluid(maxWidth: 2000) {
+      fluid(maxWidth: 2400) {
         ...GatsbyContentfulFluid_withWebp
       }
     }

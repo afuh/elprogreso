@@ -1,17 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Hero, Productos, Historia, Tradicion, Galeria, Contact } from './sections'
+import { Hero, Tradicion, Contact, Gallery } from './sections'
 
 const Home = ({ content, social }) => {
-  const [historia, productos, tradicion, galeria] = content.sections
+  const [historia, productos, tradicion] = content.sections
 
   return (
     <>
       <Hero content={content.hero} />
-      <Historia content={historia} />
-      <Productos content={productos} />
-      <Galeria content={galeria} />
+      <Gallery content={historia} />
+      <Gallery content={productos} />
       <Tradicion content={tradicion} />
       <Contact content={content.contact} social={social}/>
     </>

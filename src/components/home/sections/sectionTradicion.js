@@ -10,8 +10,6 @@ import { fontSize, border } from '../../../utils/style'
 const Section = styled(St)`
   padding: 0;
   width: 100%;
-  height: 100vh;
-  margin-top: 100px;
 
   ${border}
 `
