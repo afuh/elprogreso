@@ -53,9 +53,8 @@ export const HomePage = graphql`
           }
         }
       }
-      fluid(maxWidth: 1000) {
+      fluid(maxWidth: 1024) {
         src
-        srcSet
         ...GatsbyContentfulFluid_withWebp
       }
     }

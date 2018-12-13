@@ -149,6 +149,10 @@ class Gallery extends Component {
           currentImage={currentImage}
           isOpen={isOpen}
           backdropClosesModal
+          imageCountSeparator={` de `}
+          leftArrowTitle={'Anterior'}
+          rightArrowTitle={'Siguiente'}
+          closeButtonTitle={'Cerrar'}
         />
       </>
     )
