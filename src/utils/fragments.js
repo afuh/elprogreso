@@ -10,7 +10,7 @@ export const HomePage = graphql`
     }
     logoMobile {
       title
-      fluid(maxWidth: 800) {
+      fluid(maxWidth: 500) {
         ...GatsbyContentfulFluid_withWebp_noBase64
       }
     }
@@ -60,7 +60,7 @@ export const HomePage = graphql`
       }
     }
     backgroundImage{
-      fluid(maxWidth: 2400) {
+      fluid(maxWidth: 2048) {
         ...GatsbyContentfulFluid_withWebp
       }
     }

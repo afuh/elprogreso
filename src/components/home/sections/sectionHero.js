@@ -68,11 +68,13 @@ const Hero = ({ content }) => (
     />
     <Content>
       <Logo
+        style={{ maxWidth: 800 }}
         className='desktop'
         alt={content.logo.title}
         fluid={content.logo.fluid}
       />
       <Logo
+        style={{ maxWidth: 500 }}
         className='mobile'
         alt={content.logoMobile.title}
         fluid={content.logoMobile.fluid}
