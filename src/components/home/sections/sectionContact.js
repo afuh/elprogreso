@@ -1,6 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
+import { FaChevronUp } from 'react-icons/fa'
+import Fade from 'react-reveal/Fade'
+import { animateScroll } from 'react-scroll'
 
 import { Section as st, Wrapper as wr, Header, Contact as Info } from '../../../utils/UI'
 import { fontSize, media } from '../../../utils/style'
@@ -11,11 +14,17 @@ import Social from '../socialLinks'
 
 const Section = styled(st)`
   background: ${({ theme }) => theme.red};
-  padding-bottom: 140px;
   padding-top: 40px;
+
+  .icon-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+  }
 `
 
 const Wrapper = styled(wr)`
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -63,6 +72,21 @@ const FormWrapper = styled.div`
   `)}
 `
 
+const Icon = styled(FaChevronUp)`
+  margin-top: 50px;
+  width: 50px;
+  height: 50px;
+  padding: 8px;
+  color: ${({ theme }) => theme.white};
+  cursor: pointer;
+
+  :hover {
+    transform: scale(1.1)
+  }
+
+  transition: transform 0.2s ease-in;
+`
+
 const Contact = ({ content, social }) => (
   <Section>
     <Header title={content.name} footer/>
@@ -81,6 +105,16 @@ const Contact = ({ content, social }) => (
         </MapWrapper>
       </FormWrapper>
     </Wrapper>
+    <div className='icon-wrapper'>
+      <Fade delay={300}>
+        <Icon
+          onClick={() => animateScroll.scrollToTop({
+            duration: 1000,
+            smooth: "ease"
+          })}
+        />
+      </Fade>
+    </div>
   </Section>
 )
 
