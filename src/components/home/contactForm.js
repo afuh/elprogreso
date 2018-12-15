@@ -1,6 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled, { css } from 'styled-components'
+import React, { Component } from 'react'
+import styled, { css, keyframes } from 'styled-components'
+import { FaSpinner } from 'react-icons/fa'
+import { isEmail, isEmpty, normalizeEmail } from 'validator'
 
 export const Button = styled.button`
   border-radius: 6px;
@@ -9,29 +10,42 @@ export const Button = styled.button`
   font-weight: 900;
   letter-spacing: 0.2em;
   line-height: 2;
-  margin-top: 10px;
   text-align: center;
   text-transform: uppercase;
-  cursor: pointer;
   outline: none;
 
-  align-self: flex-end;
+  cursor: ${({ loading }) => !loading && "pointer"};
 
-  :active,
-  :focus,
-  :hover {
-    ${({ theme }) => css`
+  ${({ loading, theme }) => !loading && css`
+    :active,
+    :focus,
+    :hover {
       border: 1px solid ${theme.darkGray};
       background: ${theme.darkGray};
       color: ${theme.white};
-    `}
-  }
+    }
+  `}
 
   transition: all .2s;
 `
 
+const Spinner = styled(FaSpinner)`
+  animation: ${() => keyframes`
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  `} 2s linear infinite;
+
+  padding: 0;
+`
+
 const inputStyle = css`
   border: none;
+  border-radius: 6px;
   background: whitesmoke;
   display: block;
   margin: 10px 0 20px;
@@ -57,6 +71,10 @@ const Label = styled.label`
   letter-spacing: 0.2em;
   line-height: 1;
   text-transform: uppercase;
+
+  ${({ nonHuman }) => nonHuman && css`
+    display: none;
+  `}
 `
 
 const Input = styled.input`
@@ -66,47 +84,152 @@ const Input = styled.input`
 
 const Textarea = styled.textarea`
   ${inputStyle}
-  height: 14em;
+  height: 14rem;
   width: 100%;
 `
 
-const ContactForm = ({ action }) => (
-  <Form
-    name="contact"
-    method="post"
-    action={action}
-    data-netlify="true"
-    data-netlify-honeypot="last-name"
-  >
-    <div style={{ display: "none" }}>
-      <Label>Don’t fill out this field if you’re a human.
-        <Input type="text" name="last-name" />
-      </Label>
-    </div>
+const SubmitArea = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+`
 
-    <Label>Nombre
-      <Input type="text" name="name" required />
-    </Label>
-    <Label>E-mail
-      <Input type="email" name="email" required />
-    </Label>
-    <Label>
-      Mensaje
-      <Textarea name="message" required placeholder='Hola!' />
-    </Label>
-    <Button type="submit">
-      Enviar
-    </Button>
-    <Input type="hidden" name="form-name" value="contact" />
-  </Form>
-)
+class ContactForm extends Component {
+  state = {
+    name: '',
+    email: '',
+    message: '',
+    loading: false,
+    notification: null
+  }
 
-ContactForm.propTypes = {
-  action: PropTypes.string.isRequired
-}
+  handleNotification(notification) {
+    this.setState({ notification })
+  }
 
-ContactForm.defaultProps = {
-  action: '/gracias/'
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+  
+  handleSubmit = async e => {
+    e.preventDefault()
+    const { email, name, message } = this.state
+
+    if (isEmpty(name) || isEmpty(message) || isEmpty(email)) {
+      return this.handleNotification('Por favor, completá todos los campos.')
+    }
+
+    if (!isEmail(email)) {
+      return this.handleNotification('Por favor, ingresá una dirección de correo valida.')
+    }
+
+    await this.handleFetch({
+      email: normalizeEmail(email),
+      name: name.trim(),
+      message: message.trim()
+    })
+  }
+
+
+  async handleFetch({ ...data }) {
+    const encode = data => Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&")
+
+    try {
+      this.setState({ loading: true })
+
+      await fetch("/?no-cache=1", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({
+          "form-name": "contact",
+          ...data
+        })
+      })
+      this.handleNotification('Gracias, el mensaje se ha enviado exitosamente.')
+
+    } catch (error) {
+      this.handleNotification(error.message)
+
+    } finally {
+      this.setState({
+        name: '',
+        email: '',
+        message: '',
+        loading: false
+      })
+    }
+  }
+
+  render(){
+    const { name, email, message, loading, notification } = this.state
+
+    return (
+      <fieldset
+        disabled={loading}
+        style={{ border: 'none', padding: 0 }}
+      >
+        <Form
+          name='contact'
+          method='post'
+          data-netlify="true"
+          data-netlify-honeypot="last-name"
+          onSubmit={this.handleSubmit}
+        >
+          <Label nonHuman>
+            Don’t fill out this field if you’re a human.
+            <Input type="text" name="last-name" />
+          </Label>
+
+          <Label>
+            Nombre
+            <Input
+              onChange={this.handleChange}
+              value={name}
+              type="text"
+              name="name"
+              required
+            />
+          </Label>
+          <Label>
+            E-mail
+            <Input
+              onChange={this.handleChange}
+              value={email}
+              type="email"
+              name="email"
+              required
+            />
+          </Label>
+          <Label>
+            Mensaje
+            <Textarea
+              onChange={this.handleChange}
+              value={message}
+              name="message"
+              placeholder='Hola!'
+              required
+            />
+          </Label>
+          <SubmitArea>
+            {notification && <p>{notification}</p>}
+            <Button
+              loading={loading}
+              type="submit"
+            >
+              {loading ? <Spinner /> : "Enviar"}
+            </Button>
+          </SubmitArea>
+
+          <Input type="hidden" name="form-name" value="contact" />
+        </Form>
+      </fieldset>
+    )
+  }
 }
 
 export default ContactForm

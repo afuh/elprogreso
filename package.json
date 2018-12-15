@@ -35,7 +35,8 @@
     "react-images": "^0.5.19",
     "react-reveal": "^1.2.2",
     "react-scroll": "^1.7.10",
-    "styled-components": "^4.1.2"
+    "styled-components": "^4.1.2",
+    "validator": "^10.9.0"
   },
   "devDependencies": {
     "eslint": "^5.9.0",
