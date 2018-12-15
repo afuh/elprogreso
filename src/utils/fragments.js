@@ -17,7 +17,7 @@ export const HomePage = graphql`
     backgroundImage {
       title
       fluid(maxWidth: 2048) {
-        ...GatsbyContentfulFluid_withWebp
+        ...GatsbyContentfulFluid_withWebp_noBase64
       }
     }
     contact {
@@ -55,7 +55,7 @@ export const HomePage = graphql`
       }
       fluid(maxWidth: 1024) {
         src
-        ...GatsbyContentfulFluid_withWebp
+        ...GatsbyContentfulFluid_withWebp_noBase64
       }
     }
     backgroundImage{

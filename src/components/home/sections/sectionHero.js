@@ -64,6 +64,7 @@ const Logo = styled(GatsbyImg)`
 const Hero = ({ content }) => (
   <HeroWrapper>
     <BackgroundImage
+      hero
       image={content.backgroundImage}
     />
     <Content>

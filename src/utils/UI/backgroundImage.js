@@ -22,9 +22,9 @@ const Opacity = styled(Background)`
   z-index: 1;
 `
 
-export const BackgroundImage = ({ image, style }) => (
+export const BackgroundImage = ({ image, hero, style }) => (
   <Background style={{ ...style }}>
-    <Opacity />
+    {!hero && <Opacity />}
     <Image
       imgStyle={{ objectFit: "cover" }}
       alt={image.title}
@@ -35,5 +35,6 @@ export const BackgroundImage = ({ image, style }) => (
 
 BackgroundImage.propTypes = {
   image: PropTypes.object.isRequired,
-  style: PropTypes.object
+  style: PropTypes.object,
+  hero: PropTypes.bool
 }
