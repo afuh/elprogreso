@@ -7,7 +7,6 @@ export const theme = {
   white: "#fff",
   shadow: '0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)',
   position: {
-    navHeight: "70px",
     outerPadding: "4% 0",
     baseMargin: 6
   }
@@ -139,20 +138,6 @@ export const GlobalStyle = createGlobalStyle`
   .pigeon-attribution {
     background: transparent !important;
     padding: 2px 10px !important;
-  }
-
-  /* Color/shape of burger icon bars */
-  .bm-burger-button {
-    background: white;
-    position: fixed;
-    width: 30px;
-    height: 24px;
-    left: 14px;
-    top: 14px;
-
-    span {
-      background: #373a47;
-    }
   }
 `
 
