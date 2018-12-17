@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { Hero, Tradicion, Contact, Gallery } from './sections'
 
-const Home = ({ content, social }) => {
+const Home = ({ content }) => {
   const [historia, productos, tradicion] = content.sections
 
   return (
@@ -12,14 +12,13 @@ const Home = ({ content, social }) => {
       <Gallery content={historia} />
       <Gallery content={productos} />
       <Tradicion content={tradicion} />
-      <Contact content={content.contact} social={social}/>
+      <Contact content={content.contact} />
     </>
   )
 }
 
 Home.propTypes = {
-  content: PropTypes.object.isRequired,
-  social: PropTypes.array.isRequired
+  content: PropTypes.object.isRequired
 }
 
 export default Home

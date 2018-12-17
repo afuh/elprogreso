@@ -87,12 +87,12 @@ const Icon = styled(FaChevronUp)`
   transition: transform 0.2s ease-in;
 `
 
-const Contact = ({ content, social }) => (
+const Contact = ({ content }) => (
   <Section>
     <Header title={content.name} footer/>
     <Wrapper>
       <Info contact={content.info} />
-      <Social social={social}/>
+      <Social social={content.social.links}/>
       <FormWrapper>
         <div className='form' >
           <p>{content.text.md.body}</p>
@@ -119,10 +119,10 @@ const Contact = ({ content, social }) => (
 )
 
 Contact.propTypes = {
-  social: PropTypes.array.isRequired,
   content: PropTypes.shape({
     info: PropTypes.object,
-    text: PropTypes.object
+    text: PropTypes.object,
+    social: PropTypes.object
   }).isRequired
 }
 
