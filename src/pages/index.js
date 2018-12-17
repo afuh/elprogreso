@@ -7,10 +7,7 @@ import Home from '../components/home'
 
 const HomePage = ({ data }) => (
   <Layout>
-    <Home
-      content={data.content}
-      social={data.social.links}
-    />
+    <Home content={data.content} />
   </Layout>
 )
 
@@ -31,12 +28,6 @@ export const query = graphql`
       }
       contact: sectionContact {
         ...ContactInfo
-      }
-    }
-    social: contentfulSocialLinks {
-      links {
-        name
-        url
       }
     }
   }

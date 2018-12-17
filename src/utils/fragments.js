@@ -85,5 +85,11 @@ export const HomePage = graphql`
         body: rawMarkdownBody
       }
     }
+    social {
+      links {
+        name
+        url
+      }
+    }
   }
 `
