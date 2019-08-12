@@ -32,7 +32,7 @@ const Icon = styled.a`
   transition: background .3s;
 `
 
-const Social = ({ social }) => (
+export const SocialLinks = ({ social }) => (
   <Content>
     {social.map(item => (
       <Icon
@@ -45,8 +45,6 @@ const Social = ({ social }) => (
   </Content>
 )
 
-Social.propTypes = {
+SocialLinks.propTypes = {
   social: PropTypes.array.isRequired
 }
-
-export default Social

@@ -1,24 +1,33 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Hero, Tradicion, Contact, Gallery } from './sections'
+import { Hero, PreContact, Contact, Section } from './sections'
 
-const Home = ({ content }) => {
-  const [historia, productos, tradicion] = content.sections
+const DynamicSections = ({ content }) => (
+  content.map(section => (
+    <Section
+      key={section.id}
+      content={section}
+    />
+  ))
+)
 
-  return (
-    <>
-      <Hero content={content.hero} />
-      <Gallery content={historia} />
-      <Gallery content={productos} />
-      <Tradicion content={tradicion} />
-      <Contact content={content.contact} />
-    </>
-  )
-}
+const Home = ({ content: { hero, sections, preContact, contact } }) => (
+  <>
+    <Hero content={hero} />
+    <DynamicSections content={sections} />
+    <PreContact content={preContact} />
+    <Contact content={contact} />
+  </>
+)
 
 Home.propTypes = {
-  content: PropTypes.object.isRequired
+  content: PropTypes.shape({
+    hero: PropTypes.object,
+    sections: PropTypes.array,
+    preContact: PropTypes.object,
+    contact: PropTypes.object
+  }).isRequired
 }
 
 export default Home

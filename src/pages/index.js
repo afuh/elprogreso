@@ -26,6 +26,9 @@ export const query = graphql`
       sections {
         ...Section
       }
+      preContact {
+        ...PreContact
+      }
       contact: sectionContact {
         ...ContactInfo
       }

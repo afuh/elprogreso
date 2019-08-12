@@ -1,11 +1,11 @@
 import Hero from './sectionHero.js'
-import Tradicion from './sectionTradicion.js'
+import PreContact from './preContact.js'
 import Contact from './sectionContact.js'
-import Gallery from './sectionGallery.js'
+import Section from './dyanmicSection.js'
 
 export {
   Hero,
-  Gallery,
-  Tradicion,
+  Section,
+  PreContact,
   Contact
 }
