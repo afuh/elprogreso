@@ -5,12 +5,17 @@ import { FaChevronUp } from 'react-icons/fa'
 import Fade from 'react-reveal/Fade'
 import { animateScroll } from 'react-scroll'
 
-import { Section as st, Wrapper as wr, Header, Contact as Info } from '../../../utils/UI'
-import { fontSize, media } from '../../../utils/style'
+import {
+  Section as st,
+  Wrapper as wr,
+  Contact as Info,
+  Header,
+  SocialLinks,
+  ContactMap
+} from '../../../utils/UI'
 
-import Map from '../map'
-import ContactForm from '../contactForm'
-import Social from '../socialLinks'
+import { fontSize, media } from '../../../utils/style'
+import ContactForm from './contactForm'
 
 const Section = styled(st)`
   background: ${({ theme }) => theme.red};
@@ -24,7 +29,6 @@ const Section = styled(st)`
 `
 
 const Wrapper = styled(wr)`
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -92,16 +96,18 @@ const Contact = ({ content }) => (
     <Header title={content.name} footer/>
     <Wrapper>
       <Info contact={content.info} />
-      <Social social={content.social.links}/>
+      <SocialLinks social={content.social.links}/>
       <FormWrapper>
         <div className='form' >
           <p>{content.text.md.body}</p>
           <ContactForm />
         </div>
         <MapWrapper className='map'>
-          <Map latlng={
-            [content.info.location.lat, content.info.location.lon]
-          }/>
+          <ContactMap
+            latlng={
+              [content.info.location.lat, content.info.location.lon]
+            }
+          />
         </MapWrapper>
       </FormWrapper>
     </Wrapper>
@@ -120,6 +126,7 @@ const Contact = ({ content }) => (
 
 Contact.propTypes = {
   content: PropTypes.shape({
+    name: PropTypes.string,
     info: PropTypes.object,
     text: PropTypes.object,
     social: PropTypes.object

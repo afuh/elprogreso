@@ -59,11 +59,6 @@ export const HomePage = graphql`
         ...GatsbyContentfulFluid_withWebp_noBase64
       }
     }
-    backgroundImage{
-      fluid(maxWidth: 2048) {
-        ...GatsbyContentfulFluid_withWebp
-      }
-    }
   }
 
   fragment ContactInfo on ContentfulFooter {

@@ -101,7 +101,8 @@ Hero.propTypes = {
   content: PropTypes.shape({
     logo: PropTypes.object,
     backgroundImage: PropTypes.object,
-    contact: PropTypes.object
+    contact: PropTypes.object,
+    logoMobile: PropTypes.object
   }).isRequired
 }
 
