@@ -14,9 +14,9 @@ export const Button = styled.button`
   text-transform: uppercase;
   outline: none;
 
-  cursor: ${({ loading }) => !loading && "pointer"};
+  cursor: ${({ isLoading }) => !isLoading && "pointer"};
 
-  ${({ loading, theme }) => !loading && css`
+  ${({ isLoading, theme }) => !isLoading && css`
     :active,
     :focus,
     :hover {
@@ -100,7 +100,7 @@ class ContactForm extends Component {
     name: '',
     email: '',
     message: '',
-    loading: false,
+    isLoading: false,
     notification: null
   }
 
@@ -113,7 +113,7 @@ class ContactForm extends Component {
       [e.target.name]: e.target.value
     })
   }
-  
+
   handleSubmit = async e => {
     e.preventDefault()
     const { email, name, message } = this.state
@@ -140,7 +140,7 @@ class ContactForm extends Component {
       .join("&")
 
     try {
-      this.setState({ loading: true })
+      this.setState({ isLoading: true })
 
       await fetch("/?no-cache=1", {
         method: "POST",
@@ -160,17 +160,17 @@ class ContactForm extends Component {
         name: '',
         email: '',
         message: '',
-        loading: false
+        isLoading: false
       })
     }
   }
 
   render(){
-    const { name, email, message, loading, notification } = this.state
+    const { name, email, message, isLoading, notification } = this.state
 
     return (
       <fieldset
-        disabled={loading}
+        disabled={isLoading}
         style={{ border: 'none', padding: 0 }}
       >
         <Form
@@ -218,10 +218,10 @@ class ContactForm extends Component {
           <SubmitArea>
             {notification && <p>{notification}</p>}
             <Button
-              loading={loading}
+              isLoading={isLoading}
               type="submit"
             >
-              {loading ? <Spinner /> : "Enviar"}
+              {isLoading ? <Spinner /> : "Enviar"}
             </Button>
           </SubmitArea>
 

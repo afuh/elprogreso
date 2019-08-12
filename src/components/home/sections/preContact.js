@@ -31,31 +31,31 @@ const Text = styled.h2`
   ${fontSize(5.0)};
 `
 
-const Tradicion = ({ content }) => (
+const PreContact = ({ content }) => (
   <Section>
     <Wrapper>
       <BackgroundImage
-        image={content.backgroundImage}
+        image={content.background}
       />
       <Fade>
-        <Text>“{content.text.md.body}”</Text>
+        <Text>“{content.heading}”</Text>
       </Fade>
-      {content.gallery.map(photo => (
-        <GatsbyImg
-          style={{ width: "100%", maxWidth: 500 }}
-          key={photo.title}
-          alt={photo.title}
-          fluid={photo.fluid}
-        />
-      ))}
+      <GatsbyImg
+        style={{ width: "100%", maxWidth: 500 }}
+        key={content.logo.title}
+        alt={content.logo.title}
+        fluid={content.logo.fluid}
+      />
     </Wrapper>
   </Section>
 )
 
-Tradicion.propTypes = {
+PreContact.propTypes = {
   content: PropTypes.shape({
-    name: PropTypes.string
+    heading: PropTypes.string,
+    background: PropTypes.object,
+    logo: PropTypes.object
   }).isRequired
 }
 
-export default Tradicion
+export default PreContact

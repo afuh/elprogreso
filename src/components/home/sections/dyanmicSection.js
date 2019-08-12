@@ -2,10 +2,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import { Section as St, Wrapper, Header } from '../../../utils/UI'
+import { Section as St, Wrapper, Header, Gallery } from '../../../utils/UI'
 import { fontSize } from '../../../utils/style'
-import { formatGallery } from '../../../utils/helpers'
-import Gallery from '../gallery'
+
+const formatGallery = gallery => gallery.reduce((acc, ph) => [
+  ...acc,
+  {
+    fluid: ph.fluid,
+    caption: ph.title,
+    alt: ph.title,
+    src: ph.fluid.src,
+    width: ph.file.details.image.width/100,
+    height: ph.file.details.image.height/110
+  }
+], [])
 
 const Section = styled(St)`
   margin-bottom: 60px;
@@ -20,7 +30,7 @@ const Text = styled.p`
   ${fontSize(2)}
 `
 
-const Galeria = ({ content: { gallery, name, text, secondText } }) => (
+const DynamicSection = ({ content: { gallery, name, text, secondText } }) => (
   <Section id={name.toLowerCase().replace(" ", "-")}>
     <Header title={name} />
     <Wrapper>
@@ -33,7 +43,7 @@ const Galeria = ({ content: { gallery, name, text, secondText } }) => (
   </Section>
 )
 
-Galeria.propTypes = {
+DynamicSection.propTypes = {
   content: PropTypes.shape({
     gallery: PropTypes.array.isRequired,
     name: PropTypes.string.isRequired,
@@ -42,4 +52,4 @@ Galeria.propTypes = {
   })
 }
 
-export default Galeria
+export default DynamicSection

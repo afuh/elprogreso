@@ -4,7 +4,7 @@ import GatsbyImg from 'gatsby-image'
 import Lightbox from 'react-images'
 import styled, { css } from 'styled-components'
 
-import { media } from '../../utils/style'
+import { media } from '../style'
 
 const margin = 4
 
@@ -58,7 +58,7 @@ const Overlay = styled.div`
 const Photos = ({ imageArray, openLightbox, set }) => {
   const big = i => {
     if (set === 1) {
-      return !!((i === 0 || i === 5))
+      return i % 5 === 0
     }
 
     return !!((i === 6 || i === 14))
@@ -96,7 +96,7 @@ Photos.propTypes = {
   set: PropTypes.number
 }
 
-class Gallery extends Component {
+export class Gallery extends Component {
   state = {
     currentImage: 0
   }
@@ -164,5 +164,3 @@ Gallery.propTypes = {
   firstText: PropTypes.element,
   secondText: PropTypes.element
 }
-
-export default Gallery

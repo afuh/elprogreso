@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Map from 'pigeon-maps'
+import PigeonMap from 'pigeon-maps'
 import Marker from 'pigeon-marker/react'
 
 const wikimedia = {
@@ -18,19 +18,17 @@ const wikimedia = {
   )
 }
 
-const Maps = ({ latlng }) => (
-  <Map
+export const ContactMap = ({ latlng }) => (
+  <PigeonMap
     defaultCenter={latlng}
     defaultZoom={16}
     provider={wikimedia.url}
     attributionPrefix={wikimedia.attribution()}
   >
     <Marker anchor={latlng} />
-  </Map>
+  </PigeonMap>
 )
 
-Maps.propTypes = {
+ContactMap.propTypes = {
   latlng: PropTypes.array.isRequired
 }
-
-export default Maps

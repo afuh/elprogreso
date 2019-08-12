@@ -12,8 +12,7 @@ const SEO = ({ title, description, image, pathname }) => (
           defaultTitle,
           defaultDescription,
           defaultImage,
-          siteUrl,
-          favicon
+          siteUrl
         }
       }
     }) => {
@@ -21,8 +20,7 @@ const SEO = ({ title, description, image, pathname }) => (
         title: title || defaultTitle,
         description: description || defaultDescription,
         image: image ? image :`${siteUrl}${defaultImage}`,
-        url: `${siteUrl}${pathname || '/'}`,
-        favicon: `${siteUrl}${favicon}`
+        url: `${siteUrl}${pathname || '/'}`
       }
 
       return (
@@ -30,9 +28,6 @@ const SEO = ({ title, description, image, pathname }) => (
           htmlAttributes={{ lang: "en" }}
           title={seo.title}
         >
-          <link rel="shortcut icon" href={seo.favicon}/>
-          <link rel="icon" href={seo.favicon}/>
-
           <meta name="description" content={seo.description} />
           <meta name="image" content={seo.image} />
 
@@ -81,7 +76,6 @@ const query = graphql`
         defaultDescription: description
         siteUrl
         defaultImage: image
-        favicon
       }
     }
   }
