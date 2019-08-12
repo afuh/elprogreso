@@ -32,6 +32,7 @@ export const HomePage = graphql`
   }
 
   fragment Section on ContentfulSection {
+    id
     name
     text {
       md: childMarkdownRemark {
@@ -89,6 +90,30 @@ export const HomePage = graphql`
       links {
         name
         url
+      }
+    }
+  }
+
+  fragment PreContact on ContentfulPreFooter {
+    heading
+    logo {
+      title
+      file {
+        details {
+          image {
+            width
+            height
+          }
+        }
+      }
+      fluid(maxWidth: 500) {
+        src
+        ...GatsbyContentfulFluid_withWebp_noBase64
+      }
+    }
+    background {
+      fluid(maxWidth: 2048) {
+        ...GatsbyContentfulFluid_withWebp
       }
     }
   }
