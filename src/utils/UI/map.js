@@ -10,12 +10,12 @@ const wikimedia = {
   },
   attribution: () => (
     <a
-      style={{ color: "rgb(0, 120, 168)", textDecoration: "none" }}
+      style={{ color: 'rgb(0, 120, 168)', textDecoration: 'none' }}
       href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use"
     >
-        Wikimedia maps
+      Wikimedia maps
     </a>
-  )
+  ),
 }
 
 export const ContactMap = ({ latlng }) => (
@@ -30,5 +30,5 @@ export const ContactMap = ({ latlng }) => (
 )
 
 ContactMap.propTypes = {
-  latlng: PropTypes.array.isRequired
+  latlng: PropTypes.array.isRequired,
 }

@@ -1,1 +1,1 @@
-export const generateId = str => str.toLowerCase().trim().replace(/ /gi, "-")
+export const generateId = (str) => str.toLowerCase().trim().replace(/ /gi, '-')

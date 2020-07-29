@@ -6,17 +6,21 @@ import { Section as St, Wrapper, Header, Gallery } from '../../../utils/UI'
 import { fontSize } from '../../../utils/style'
 import { generateId } from '../../../utils/helpers'
 
-const formatGallery = gallery => gallery.reduce((acc, ph) => [
-  ...acc,
-  {
-    fluid: ph.fluid,
-    caption: ph.title,
-    alt: ph.title,
-    src: ph.fluid.src,
-    width: ph.file.details.image.width/100,
-    height: ph.file.details.image.height/110
-  }
-], [])
+const formatGallery = (gallery) =>
+  gallery.reduce(
+    (acc, ph) => [
+      ...acc,
+      {
+        fluid: ph.fluid,
+        caption: ph.title,
+        alt: ph.title,
+        src: ph.fluid.src,
+        width: ph.file.details.image.width / 100,
+        height: ph.file.details.image.height / 110,
+      },
+    ],
+    [],
+  )
 
 const Section = styled(St)`
   margin-bottom: 60px;
@@ -49,8 +53,8 @@ DynamicSection.propTypes = {
     gallery: PropTypes.array.isRequired,
     name: PropTypes.string.isRequired,
     text: PropTypes.object,
-    secondText: PropTypes.object
-  })
+    secondText: PropTypes.object,
+  }),
 }
 
 export default DynamicSection

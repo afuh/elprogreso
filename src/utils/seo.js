@@ -8,30 +8,22 @@ const SEO = ({ title, description, image, pathname }) => (
     query={query}
     render={({
       site: {
-        meta: {
-          defaultTitle,
-          defaultDescription,
-          defaultImage,
-          siteUrl
-        }
-      }
+        meta: { defaultTitle, defaultDescription, defaultImage, siteUrl },
+      },
     }) => {
       const seo = {
         title: title || defaultTitle,
         description: description || defaultDescription,
-        image: image ? image :`${siteUrl}${defaultImage}`,
-        url: `${siteUrl}${pathname || '/'}`
+        image: image ? image : `${siteUrl}${defaultImage}`,
+        url: `${siteUrl}${pathname || '/'}`,
       }
 
       return (
-        <Helmet
-          htmlAttributes={{ lang: "en" }}
-          title={seo.title}
-        >
+        <Helmet htmlAttributes={{ lang: 'en' }} title={seo.title}>
           <meta name="description" content={seo.description} />
           <meta name="image" content={seo.image} />
 
-          <meta property="og:locale" content='en'/>
+          <meta property="og:locale" content="en" />
           <meta property="og:type" content="website" />
           <meta property="og:site_name" content={seo.title} />
           <meta property="og:title" content={seo.title} />
@@ -48,7 +40,8 @@ const SEO = ({ title, description, image, pathname }) => (
           <meta name="twitter:description" content={seo.description} />
           <meta name="twitter:image" content={seo.image} />
         </Helmet>
-      ) }}
+      )
+    }}
   />
 )
 
@@ -56,14 +49,14 @@ SEO.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   image: PropTypes.string,
-  pathname: PropTypes.string
+  pathname: PropTypes.string,
 }
 
 SEO.defaultProps = {
   title: null,
   description: null,
   image: null,
-  pathname: null
+  pathname: null,
 }
 
 export default SEO

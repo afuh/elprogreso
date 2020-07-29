@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql } from "gatsby"
+import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
 import Home from '../components/home'
@@ -12,14 +12,14 @@ const HomePage = ({ data }) => (
 )
 
 HomePage.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
 }
 
 export default HomePage
 
 export const query = graphql`
   query HOME_PAGE_QUERY {
-    content: contentfulPage(name: {regex:"/home/i"}) {
+    content: contentfulPage(name: { regex: "/home/i" }) {
       hero {
         ...Hero
       }

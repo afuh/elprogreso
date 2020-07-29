@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-const findIcon = name => {
-  const Component = require("react-icons/fa")['Fa' + name]
+const findIcon = (name) => {
+  const Component = require('react-icons/fa')['Fa' + name]
   return <Component />
 }
 
@@ -29,16 +29,13 @@ const Icon = styled.a`
     background: ${({ theme }) => theme.white};
   }
 
-  transition: background .3s;
+  transition: background 0.3s;
 `
 
 export const SocialLinks = ({ social }) => (
   <Content>
-    {social.map(item => (
-      <Icon
-        key={item.name}
-        href={item.url}
-      >
+    {social.map((item) => (
+      <Icon key={item.name} href={item.url}>
         {findIcon(item.name)}
       </Icon>
     ))}
@@ -46,5 +43,5 @@ export const SocialLinks = ({ social }) => (
 )
 
 SocialLinks.propTypes = {
-  social: PropTypes.array.isRequired
+  social: PropTypes.array.isRequired,
 }

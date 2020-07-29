@@ -1,7 +1,7 @@
 import React from 'react'
-import Layout from '../components/layout'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
+import Layout from '../components/layout'
 
 import { Section, Wrapper as Wp } from '../utils/UI'
 
@@ -23,7 +23,7 @@ const NotFoundPage = () => (
     <Section>
       <Wrapper>
         <h1>404</h1>
-        <Link to='/'>← Inicio</Link>
+        <Link to="/">← Inicio</Link>
       </Wrapper>
     </Section>
   </Layout>

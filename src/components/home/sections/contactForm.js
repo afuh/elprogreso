@@ -14,17 +14,19 @@ export const Button = styled.button`
   text-transform: uppercase;
   outline: none;
 
-  cursor: ${({ isLoading }) => !isLoading && "pointer"};
+  cursor: ${({ isLoading }) => !isLoading && 'pointer'};
 
-  ${({ isLoading, theme }) => !isLoading && css`
-    :active,
-    :focus,
-    :hover {
-      border: 1px solid ${theme.darkGray};
-      background: ${theme.darkGray};
-      color: ${theme.white};
-    }
-  `}
+  ${({ isLoading, theme }) =>
+    !isLoading &&
+    css`
+      :active,
+      :focus,
+      :hover {
+        border: 1px solid ${theme.darkGray};
+        background: ${theme.darkGray};
+        color: ${theme.white};
+      }
+    `}
 
   transition: all .2s;
 `
@@ -38,7 +40,8 @@ const Spinner = styled(FaSpinner)`
     to {
       transform: rotate(360deg);
     }
-  `} 2s linear infinite;
+  `}
+    2s linear infinite;
 
   padding: 0;
 `
@@ -50,7 +53,7 @@ const inputStyle = css`
   display: block;
   margin: 10px 0 20px;
   padding: 0.9rem;
-  transition: .2s border-color;
+  transition: 0.2s border-color;
 
   &:focus {
     outline: 0;
@@ -72,9 +75,11 @@ const Label = styled.label`
   line-height: 1;
   text-transform: uppercase;
 
-  ${({ nonHuman }) => nonHuman && css`
-    display: none;
-  `}
+  ${({ nonHuman }) =>
+    nonHuman &&
+    css`
+      display: none;
+    `}
 `
 
 const Input = styled.input`
@@ -101,20 +106,20 @@ class ContactForm extends Component {
     email: '',
     message: '',
     isLoading: false,
-    notification: null
+    notification: null,
   }
 
   handleNotification(notification) {
     this.setState({ notification })
   }
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     })
   }
 
-  handleSubmit = async e => {
+  handleSubmit = async (e) => {
     e.preventDefault()
     const { email, name, message } = this.state
 
@@ -129,53 +134,48 @@ class ContactForm extends Component {
     await this.handleFetch({
       email: normalizeEmail(email),
       name: name.trim(),
-      message: message.trim()
+      message: message.trim(),
     })
   }
 
-
   async handleFetch({ ...data }) {
-    const encode = data => Object.keys(data)
-      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&")
+    const encode = (payload) =>
+      Object.keys(payload)
+        .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(payload[key]))
+        .join('&')
 
     try {
       this.setState({ isLoading: true })
 
-      await fetch("/?no-cache=1", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      await fetch('/?no-cache=1', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encode({
-          "form-name": "contact",
-          ...data
-        })
+          'form-name': 'contact',
+          ...data,
+        }),
       })
       this.handleNotification('Gracias, el mensaje se ha enviado exitosamente.')
-
     } catch (error) {
       this.handleNotification(error.message)
-
     } finally {
       this.setState({
         name: '',
         email: '',
         message: '',
-        isLoading: false
+        isLoading: false,
       })
     }
   }
 
-  render(){
+  render() {
     const { name, email, message, isLoading, notification } = this.state
 
     return (
-      <fieldset
-        disabled={isLoading}
-        style={{ border: 'none', padding: 0 }}
-      >
+      <fieldset disabled={isLoading} style={{ border: 'none', padding: 0 }}>
         <Form
-          name='contact'
-          method='post'
+          name="contact"
+          method="post"
           data-netlify="true"
           data-netlify-honeypot="last-name"
           onSubmit={this.handleSubmit}
@@ -187,41 +187,20 @@ class ContactForm extends Component {
 
           <Label>
             Nombre
-            <Input
-              onChange={this.handleChange}
-              value={name}
-              type="text"
-              name="name"
-              required
-            />
+            <Input onChange={this.handleChange} value={name} type="text" name="name" required />
           </Label>
           <Label>
             E-mail
-            <Input
-              onChange={this.handleChange}
-              value={email}
-              type="email"
-              name="email"
-              required
-            />
+            <Input onChange={this.handleChange} value={email} type="email" name="email" required />
           </Label>
           <Label>
             Mensaje
-            <Textarea
-              onChange={this.handleChange}
-              value={message}
-              name="message"
-              placeholder='Hola!'
-              required
-            />
+            <Textarea onChange={this.handleChange} value={message} name="message" placeholder="Hola!" required />
           </Label>
           <SubmitArea>
             {notification && <p>{notification}</p>}
-            <Button
-              isLoading={isLoading}
-              type="submit"
-            >
-              {isLoading ? <Spinner /> : "Enviar"}
+            <Button isLoading={isLoading} type="submit">
+              {isLoading ? <Spinner /> : 'Enviar'}
             </Button>
           </SubmitArea>
 

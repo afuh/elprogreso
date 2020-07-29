@@ -16,14 +16,14 @@ const Wrapper = styled.div`
 `
 
 const ImageWrapper = styled.div`
-  flex-basis: calc(${({ big }) => big ? 50 : 25}% - ${margin*2}px);
+  flex-basis: calc(${({ big }) => (big ? 50 : 25)}% - ${margin * 2}px);
   margin: ${margin}px;
   position: relative;
   overflow: hidden;
   border-radius: 10px;
 
   ${media.mobile(css`
-    flex-basis: calc(50% - ${margin*2}px);
+    flex-basis: calc(50% - ${margin * 2}px);
   `)}
 
   ${media.phone(css`
@@ -34,7 +34,7 @@ const ImageWrapper = styled.div`
 const Overlay = styled.div`
   cursor: pointer;
   opacity: 0;
-  background: linear-gradient(to top, rgba(0,0,0, 0.7) 10%, rgba(0,0,0, 0.1));
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0.1));
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -56,35 +56,32 @@ const Overlay = styled.div`
 `
 
 const Photos = ({ imageArray, openLightbox, set }) => {
-  const big = i => {
+  const big = (i) => {
     if (set === 1) {
       return i % 5 === 0
     }
 
-    return !!((i === 6 || i === 14))
+    return !!(i === 6 || i === 14)
   }
 
   return (
     <Wrapper>
-      {imageArray.map((photo, i) =>
-        (set === 1 ? i < 6 : i >= 6) && (
-          <ImageWrapper
-            big={big(i)}
-            key={i}
-            onClick={() => openLightbox(i)}
-          >
-            <Overlay>
-              <h2>{photo.caption}</h2>
-            </Overlay>
-            <GatsbyImg
-              imgStyle={{ objectFit: "cover" }}
-              style={{ height: "100%", maxHeight: 400 }}
-              alt={photo.caption}
-              title={photo.caption}
-              fluid={photo.fluid}
-            />
-          </ImageWrapper>
-        )
+      {imageArray.map(
+        (photo, i) =>
+          (set === 1 ? i < 6 : i >= 6) && (
+            <ImageWrapper big={big(i)} key={i} onClick={() => openLightbox(i)}>
+              <Overlay>
+                <h2>{photo.caption}</h2>
+              </Overlay>
+              <GatsbyImg
+                imgStyle={{ objectFit: 'cover' }}
+                style={{ height: '100%', maxHeight: 400 }}
+                alt={photo.caption}
+                title={photo.caption}
+                fluid={photo.fluid}
+              />
+            </ImageWrapper>
+          ),
       )}
     </Wrapper>
   )
@@ -93,34 +90,34 @@ const Photos = ({ imageArray, openLightbox, set }) => {
 Photos.propTypes = {
   imageArray: PropTypes.array.isRequired,
   openLightbox: PropTypes.func.isRequired,
-  set: PropTypes.number
+  set: PropTypes.number,
 }
 
 export class Gallery extends Component {
   state = {
-    currentImage: 0
+    currentImage: 0,
   }
 
-  openLightbox = currentImage => {
+  openLightbox = (currentImage) => {
     this.setState({
       currentImage,
-      isOpen: true
+      isOpen: true,
     })
   }
   closeLightbox = () => {
     this.setState({
       currentImage: 0,
-      isOpen: false
+      isOpen: false,
     })
   }
   gotoPrevious = () => {
-    this.setState(state => ({
-      currentImage: state.currentImage - 1
+    this.setState((state) => ({
+      currentImage: state.currentImage - 1,
     }))
   }
   gotoNext = () => {
-    this.setState(state => ({
-      currentImage: state.currentImage + 1
+    this.setState((state) => ({
+      currentImage: state.currentImage + 1,
     }))
   }
   render() {
@@ -130,17 +127,9 @@ export class Gallery extends Component {
     return (
       <>
         {firstText}
-        <Photos
-          imageArray={photos}
-          openLightbox={this.openLightbox}
-          set={1}
-        />
+        <Photos imageArray={photos} openLightbox={this.openLightbox} set={1} />
         {secondText}
-        <Photos
-          imageArray={photos}
-          openLightbox={this.openLightbox}
-          set={2}
-        />
+        <Photos imageArray={photos} openLightbox={this.openLightbox} set={2} />
         <Lightbox
           images={photos}
           onClose={this.closeLightbox}
@@ -162,5 +151,5 @@ export class Gallery extends Component {
 Gallery.propTypes = {
   photos: PropTypes.array.isRequired,
   firstText: PropTypes.element,
-  secondText: PropTypes.element
+  secondText: PropTypes.element,
 }
