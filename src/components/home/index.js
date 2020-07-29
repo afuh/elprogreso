@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { Hero, PreContact, Contact, Section } from './sections'
+import { generateId } from '../../utils/helpers'
 
 const DynamicSections = ({ content }) => (
   content.map(section => (
@@ -14,7 +15,7 @@ const DynamicSections = ({ content }) => (
 
 const Home = ({ content: { hero, sections, preContact, contact } }) => (
   <>
-    <Hero content={hero} />
+    <Hero content={hero} scrollTo={generateId(sections[0].name)}/>
     <DynamicSections content={sections} />
     <PreContact content={preContact} />
     <Contact content={contact} />

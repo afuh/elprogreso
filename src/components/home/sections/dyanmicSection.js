@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import { Section as St, Wrapper, Header, Gallery } from '../../../utils/UI'
 import { fontSize } from '../../../utils/style'
+import { generateId } from '../../../utils/helpers'
 
 const formatGallery = gallery => gallery.reduce((acc, ph) => [
   ...acc,
@@ -31,7 +32,7 @@ const Text = styled.p`
 `
 
 const DynamicSection = ({ content: { gallery, name, text, secondText } }) => (
-  <Section id={name.toLowerCase().replace(" ", "-")}>
+  <Section id={generateId(name)}>
     <Header title={name} />
     <Wrapper>
       <Gallery

@@ -61,7 +61,7 @@ const Logo = styled(GatsbyImg)`
   `)}
 `
 
-const Hero = ({ content }) => (
+const Hero = ({ content, scrollTo }) => (
   <HeroWrapper>
     <BackgroundImage
       hero
@@ -87,7 +87,7 @@ const Hero = ({ content }) => (
       </Fade>
       <Fade delay={500}>
         <Icon
-          onClick={() => scroller.scrollTo("nuestra-historia", {
+          onClick={() => scroller.scrollTo(scrollTo || '', {
             duration: 1000,
             smooth: "ease"
           })}
@@ -98,6 +98,7 @@ const Hero = ({ content }) => (
 )
 
 Hero.propTypes = {
+  scrollTo: PropTypes.string.isRequired,
   content: PropTypes.shape({
     logo: PropTypes.object,
     backgroundImage: PropTypes.object,
