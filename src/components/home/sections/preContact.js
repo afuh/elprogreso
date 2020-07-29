@@ -34,14 +34,12 @@ const Text = styled.h2`
 const PreContact = ({ content }) => (
   <Section>
     <Wrapper>
-      <BackgroundImage
-        image={content.background}
-      />
+      <BackgroundImage image={content.background} />
       <Fade>
         <Text>“{content.heading}”</Text>
       </Fade>
       <GatsbyImg
-        style={{ width: "100%", maxWidth: 500 }}
+        style={{ width: '100%', maxWidth: 500 }}
         key={content.logo.title}
         alt={content.logo.title}
         fluid={content.logo.fluid}
@@ -54,8 +52,8 @@ PreContact.propTypes = {
   content: PropTypes.shape({
     heading: PropTypes.string,
     background: PropTypes.object,
-    logo: PropTypes.object
-  }).isRequired
+    logo: PropTypes.object,
+  }).isRequired,
 }
 
 export default PreContact

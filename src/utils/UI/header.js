@@ -5,8 +5,8 @@ import GatsbyImg from 'gatsby-image'
 import Fade from 'react-reveal/Fade'
 import styled, { css } from 'styled-components'
 
-import { Wrapper } from './'
 import { fontSize, media } from '../style'
+import { Wrapper } from './'
 
 const Container = styled.header`
   padding: 2% 0;
@@ -41,9 +41,11 @@ const Title = styled.h2`
     white-space: normal;
   `)}
 
-  ${({ theme, footer }) => footer && css`
-    color: ${theme.white};
-  `};
+  ${({ theme, footer }) =>
+    footer &&
+    css`
+      color: ${theme.white};
+    `};
 `
 
 export const Header = ({ title, footer }) => (
@@ -54,19 +56,9 @@ export const Header = ({ title, footer }) => (
         <Wrapper>
           <Fade>
             <Content>
-              <Vigneta
-                alt='Vignetas'
-                fluid={!footer ? left.fluid : wLeft.fluid}
-              />
-              <Title
-                footer={footer}
-              >
-                {title}
-              </Title>
-              <Vigneta
-                alt='Vignetas'
-                fluid={!footer ? right.fluid : wRight.fluid}
-              />
+              <Vigneta alt="Vignetas" fluid={!footer ? left.fluid : wLeft.fluid} />
+              <Title footer={footer}>{title}</Title>
+              <Vigneta alt="Vignetas" fluid={!footer ? right.fluid : wRight.fluid} />
             </Content>
           </Fade>
         </Wrapper>
@@ -77,27 +69,27 @@ export const Header = ({ title, footer }) => (
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
-  footer: PropTypes.bool
+  footer: PropTypes.bool,
 }
 
 const query = graphql`
   query VIGNETAS {
-    left: contentfulAsset(title: {regex: "/vigneta left/i"}) {
+    left: contentfulAsset(title: { regex: "/vigneta left/i" }) {
       fluid(maxWidth: 600) {
         ...GatsbyContentfulFluid_tracedSVG
       }
     }
-    right: contentfulAsset(title: {regex: "/vigneta right/i"}) {
+    right: contentfulAsset(title: { regex: "/vigneta right/i" }) {
       fluid(maxWidth: 600) {
         ...GatsbyContentfulFluid_tracedSVG
       }
     }
-    wLeft: contentfulAsset(title: {regex: "/vigneta-white left/i"}) {
+    wLeft: contentfulAsset(title: { regex: "/vigneta-white left/i" }) {
       fluid(maxWidth: 600) {
         ...GatsbyContentfulFluid_tracedSVG
       }
     }
-    wRight: contentfulAsset(title: {regex: "/vigneta-white right/i"}) {
+    wRight: contentfulAsset(title: { regex: "/vigneta-white right/i" }) {
       fluid(maxWidth: 600) {
         ...GatsbyContentfulFluid_tracedSVG
       }

@@ -1,15 +1,15 @@
 import { css, createGlobalStyle } from 'styled-components'
 
 export const theme = {
-  red: "#8D1A14",
-  darkGray: "#272521",
-  gray: "#756F63",
-  white: "#fff",
+  red: '#8D1A14',
+  darkGray: '#272521',
+  gray: '#756F63',
+  white: '#fff',
   shadow: '0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)',
   position: {
-    outerPadding: "4% 0",
-    baseMargin: 6
-  }
+    outerPadding: '4% 0',
+    baseMargin: 6,
+  },
 }
 
 export const defaultFont = [
@@ -22,7 +22,7 @@ export const defaultFont = [
   'Ubuntu',
   'Cantarell',
   '"Helvetica Neue"',
-  'sans-serif'
+  'sans-serif',
 ].join()
 
 const screenBreak = {
@@ -31,21 +31,21 @@ const screenBreak = {
   small: 480,
   medium: 1024,
   xlarge: 1920,
-  xxlarge: 2560
+  xxlarge: 2560,
 }
 
 export const media = {
-  mobile: inner => css`
+  mobile: (inner) => css`
     @media (max-width: ${screenBreak.mobile / 16}em) {
       ${inner}
     }
   `,
-  phone: inner => css`
+  phone: (inner) => css`
     @media (max-width: ${screenBreak.phone / 16}em) {
       ${inner}
     }
   `,
-  small: inner => css`
+  small: (inner) => css`
     @media (max-width: ${screenBreak.small / 16}em) {
       ${inner}
     }
@@ -56,40 +56,40 @@ export const media = {
     }
   `,
 
-  medium: inner => css`
+  medium: (inner) => css`
     @media (min-width: ${screenBreak.medium / 16}em) {
       ${inner}
     }
   `,
-  xlarge: inner => css`
+  xlarge: (inner) => css`
     @media (min-width: ${screenBreak.xlarge / 16}em) {
       ${inner}
     }
   `,
-  xxlarge: inner => css`
+  xxlarge: (inner) => css`
     @media (min-width: ${screenBreak.xxlarge / 16}em) {
       ${inner}
     }
-  `
+  `,
 }
 
-export const fontSize = size => css`
+export const fontSize = (size) => css`
   font-size: ${size}rem;
 
   ${media.mobile(css`
-    font-size: ${size - (size/5)}rem;
+    font-size: ${size - size / 5}rem;
   `)}
 
   ${media.phone(css`
-    font-size: ${size - (size/4)}rem;
+    font-size: ${size - size / 4}rem;
   `)}
 
   ${media.xlarge(css`
-    font-size: ${size*1.2}rem;
+    font-size: ${size * 1.2}rem;
   `)}
 
   ${media.xxlarge(css`
-    font-size: ${size*1.4}rem;
+    font-size: ${size * 1.4}rem;
   `)}
 `
 

@@ -34,7 +34,7 @@ const Icon = styled(FaChevronDown)`
   cursor: pointer;
 
   :hover {
-    transform: scale(1.1)
+    transform: scale(1.1);
   }
 
   transition: transform 0.2s ease-in;
@@ -63,34 +63,26 @@ const Logo = styled(GatsbyImg)`
 
 const Hero = ({ content, scrollTo }) => (
   <HeroWrapper>
-    <BackgroundImage
-      hero
-      image={content.backgroundImage}
-    />
+    <BackgroundImage hero image={content.backgroundImage} />
     <Content>
-      <Logo
-        style={{ maxWidth: 800 }}
-        className='desktop'
-        alt={content.logo.title}
-        fluid={content.logo.fluid}
-      />
+      <Logo style={{ maxWidth: 800 }} className="desktop" alt={content.logo.title} fluid={content.logo.fluid} />
       <Logo
         style={{ maxWidth: 500 }}
-        className='mobile'
+        className="mobile"
         alt={content.logoMobile.title}
         fluid={content.logoMobile.fluid}
       />
       <Fade delay={300}>
-        <Contact
-          contact={content.contact}
-        />
+        <Contact contact={content.contact} />
       </Fade>
       <Fade delay={500}>
         <Icon
-          onClick={() => scroller.scrollTo(scrollTo || '', {
-            duration: 1000,
-            smooth: "ease"
-          })}
+          onClick={() =>
+            scroller.scrollTo(scrollTo || '', {
+              duration: 1000,
+              smooth: 'ease',
+            })
+          }
         />
       </Fade>
     </Content>
@@ -103,8 +95,8 @@ Hero.propTypes = {
     logo: PropTypes.object,
     backgroundImage: PropTypes.object,
     contact: PropTypes.object,
-    logoMobile: PropTypes.object
-  }).isRequired
+    logoMobile: PropTypes.object,
+  }).isRequired,
 }
 
 export default Hero

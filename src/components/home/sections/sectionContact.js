@@ -5,14 +5,7 @@ import { FaChevronUp } from 'react-icons/fa'
 import Fade from 'react-reveal/Fade'
 import { animateScroll } from 'react-scroll'
 
-import {
-  Section as st,
-  Wrapper as wr,
-  Contact as Info,
-  Header,
-  SocialLinks,
-  ContactMap
-} from '../../../utils/UI'
+import { Section as st, Wrapper as wr, Contact as Info, Header, SocialLinks, ContactMap } from '../../../utils/UI'
 
 import { fontSize, media } from '../../../utils/style'
 import ContactForm from './contactForm'
@@ -85,7 +78,7 @@ const Icon = styled(FaChevronUp)`
   cursor: pointer;
 
   :hover {
-    transform: scale(1.1)
+    transform: scale(1.1);
   }
 
   transition: transform 0.2s ease-in;
@@ -93,31 +86,29 @@ const Icon = styled(FaChevronUp)`
 
 const Contact = ({ content }) => (
   <Section>
-    <Header title={content.name} footer/>
+    <Header title={content.name} footer />
     <Wrapper>
       <Info contact={content.info} />
-      <SocialLinks social={content.social.links}/>
+      <SocialLinks social={content.social.links} />
       <FormWrapper>
-        <div className='form' >
+        <div className="form">
           <p>{content.text.md.body}</p>
           <ContactForm />
         </div>
-        <MapWrapper className='map'>
-          <ContactMap
-            latlng={
-              [content.info.location.lat, content.info.location.lon]
-            }
-          />
+        <MapWrapper className="map">
+          <ContactMap latlng={[content.info.location.lat, content.info.location.lon]} />
         </MapWrapper>
       </FormWrapper>
     </Wrapper>
-    <div className='icon-wrapper'>
+    <div className="icon-wrapper">
       <Fade delay={300}>
         <Icon
-          onClick={() => animateScroll.scrollToTop({
-            duration: 1000,
-            smooth: "ease"
-          })}
+          onClick={() =>
+            animateScroll.scrollToTop({
+              duration: 1000,
+              smooth: 'ease',
+            })
+          }
         />
       </Fade>
     </div>
@@ -129,8 +120,8 @@ Contact.propTypes = {
     name: PropTypes.string,
     info: PropTypes.object,
     text: PropTypes.object,
-    social: PropTypes.object
-  }).isRequired
+    social: PropTypes.object,
+  }).isRequired,
 }
 
 export default Contact

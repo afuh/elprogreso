@@ -18,23 +18,19 @@ const Image = styled(GatsbyImg)`
 `
 
 const Opacity = styled(Background)`
-  background: linear-gradient(to top, rgba(0,0,0, 0.7) 30%, rgba(0,0,0, 0.1));
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 30%, rgba(0, 0, 0, 0.1));
   z-index: 1;
 `
 
 export const BackgroundImage = ({ image, hero, style }) => (
   <Background style={{ ...style }}>
     {!hero && <Opacity />}
-    <Image
-      imgStyle={{ objectFit: "cover" }}
-      alt={image.title}
-      fluid={image.fluid}
-    />
+    <Image imgStyle={{ objectFit: 'cover' }} alt={image.title} fluid={image.fluid} />
   </Background>
 )
 
 BackgroundImage.propTypes = {
   image: PropTypes.object.isRequired,
   style: PropTypes.object,
-  hero: PropTypes.bool
+  hero: PropTypes.bool,
 }

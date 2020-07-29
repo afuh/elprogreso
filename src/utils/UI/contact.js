@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components'
 import { media } from '../style'
 
 const Text = styled.div`
-  color: ${({ theme, dark }) => dark ? theme.gray : theme.white};
+  color: ${({ theme, dark }) => (dark ? theme.gray : theme.white)};
   text-align: center;
 
   h1 {
@@ -13,7 +13,7 @@ const Text = styled.div`
   }
 
   a {
-    color: ${({ theme, dark }) => dark ? theme.gray : theme.white};
+    color: ${({ theme, dark }) => (dark ? theme.gray : theme.white)};
   }
 
   a.phone-number {
@@ -35,22 +35,18 @@ export const Contact = ({ contact, dark }) => (
     <h1>
       {contact.address.md.body}
       {` `}-{` `}
-      <span className='phone-number'>
-        {contact.phoneNumber}
-      </span>
-      <a className='phone-number'
-        href={"tel:011"+contact.phoneNumber}
-      >
+      <span className="phone-number">{contact.phoneNumber}</span>
+      <a className="phone-number" href={'tel:011' + contact.phoneNumber}>
         {contact.phoneNumber}
       </a>
     </h1>
     <h2>
-      <a href={"mailto:"+contact.email}>{contact.email}</a>
+      <a href={'mailto:' + contact.email}>{contact.email}</a>
     </h2>
   </Text>
 )
 
 Contact.propTypes = {
   contact: PropTypes.object.isRequired,
-  dark: PropTypes.bool
+  dark: PropTypes.bool,
 }
