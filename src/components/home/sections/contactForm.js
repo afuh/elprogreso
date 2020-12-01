@@ -13,6 +13,7 @@ export const Button = styled.button`
   text-align: center;
   text-transform: uppercase;
   outline: none;
+  border: 1px solid white;
 
   cursor: ${({ isLoading }) => !isLoading && 'pointer'};
 
@@ -70,7 +71,6 @@ const Form = styled.form`
 const Label = styled.label`
   display: block;
   font-size: 1.1rem;
-  font-weight: 500;
   letter-spacing: 0.2em;
   line-height: 1;
   text-transform: uppercase;

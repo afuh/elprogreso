@@ -17,18 +17,11 @@ module.exports = {
     'gatsby-transformer-remark',
     'gatsby-plugin-robots-txt',
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-web-font-loader`,
       options: {
-        fonts: [
-          {
-            family: 'Merriweather',
-            variants: ['400', '700', '900', '700i', '900i'],
-          },
-          {
-            family: 'Playfair Display',
-            variants: ['700', '700i'],
-          },
-        ],
+        google: {
+          families: ['Merriweather:ital,wght@0,400;0,700;0,900;1,700;1,900', 'Playfair+Display:ital,wght@1,700'],
+        },
       },
     },
     {

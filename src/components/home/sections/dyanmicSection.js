@@ -31,6 +31,7 @@ const Text = styled.p`
   margin: 30px 0;
   text-align: justify;
   font-style: italic;
+  font-weight: 700;
 
   ${fontSize(2)}
 `
